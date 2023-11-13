@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">recipe</string>
+    <string name="item_name_event_home_add">Ajouter</string>
+</resources>
