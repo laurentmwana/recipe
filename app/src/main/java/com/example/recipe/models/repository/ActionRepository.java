@@ -7,9 +7,11 @@ import android.database.Cursor;
 
 import com.example.recipe.database.AppDatabase;
 import com.example.recipe.exception.NotFoundException;
+import com.example.recipe.helper.Moment;
 import com.example.recipe.models.entity.Action;
 import com.example.recipe.models.query.Insert;
 import com.example.recipe.models.query.Select;
+import com.example.recipe.models.query.Update;
 
 import java.util.ArrayList;
 
@@ -18,13 +20,15 @@ public class ActionRepository {
     public static final String TABLE = "actions";
 
     private final AppDatabase database;
+    private Context context;
 
     private String[] columns = new String[]{
-            "id", "start_time", "end_time", "amount_daily_recipe", "amount_daily_expense", "created_at", "updated_at"};
+            "id", "start_time", "end_time", "amount_daily_recipe", "amount_daily_expense", "state", "created_at", "updated_at"};
 
-    public ActionRepository(Context c) {
+    public ActionRepository(Context context) {
 
-        this.database = AppDatabase.getDatabaseInstance(c.getApplicationContext());
+        this.database = AppDatabase.getDatabaseInstance(context.getApplicationContext());
+        this.context = context;
     }
 
     /**
@@ -37,6 +41,7 @@ public class ActionRepository {
 
         ContentValues values = new ContentValues();
         values.put("start_time", start);
+        values.put("created_at", Moment.at());
 
         return (new Insert(database)).from(TABLE).values(values).save();
     }
@@ -86,7 +91,34 @@ public class ActionRepository {
                 .setEndTime(cs.getString(2))
                 .setAmountDailyRecipe(cs.getFloat(3))
                 .setAmountDailyExpense(cs.getFloat(4))
-                .setCreatedAt(cs.getString(5))
-                .setUpdatedAt(cs.getString(6));
+                .setState(cs.getInt(5))
+                .setCreatedAt(cs.getString(6))
+                .setUpdatedAt(cs.getString(7));
+    }
+
+    public Action findState() {
+        // on recupère les données depuis la base de données qui repondent à la condition id = id
+        Cursor cs = (new Select(database))
+                .from(TABLE, null)
+                .select(columns)
+                .where("state = 0")
+                .orderBy("created_at", "DESC")
+                .limit(1).execute();
+        if (cs.getCount() <= 0) {
+            return null;
+        }
+        cs.moveToFirst();
+
+        return getHydrate(cs);
+    }
+
+    public boolean startedUpdate(Action action) {
+        ContentValues vs = new ContentValues();
+        vs.put("start_time", action.getStartTime());
+        return (new Update(database))
+                .from(TABLE, null)
+                .values(vs)
+                .where("id = ?").args(String.valueOf(action.getId()))
+                .save();
     }
 }

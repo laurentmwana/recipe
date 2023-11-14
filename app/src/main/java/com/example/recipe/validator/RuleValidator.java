@@ -9,7 +9,7 @@ public class RuleValidator {
     }
 
     public boolean regex(String regex) {
-        return data.matches(regex);
+        return !data.matches(regex);
     }
 
     public boolean required() {

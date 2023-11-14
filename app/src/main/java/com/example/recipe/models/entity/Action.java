@@ -12,6 +12,8 @@ public class Action {
 
     private Float amountDailyExpense;
 
+    private boolean state;
+
     private String created_at;
 
     private String updated_at;
@@ -81,6 +83,16 @@ public class Action {
 
     public Action setUpdatedAt(String updated_at) {
         this.updated_at = updated_at;
+
+        return this;
+    }
+
+    public boolean isState() {
+        return state;
+    }
+
+    public Action setState(int state) {
+        this.state = state == 1;
 
         return this;
     }

@@ -26,8 +26,9 @@ public class Database extends SQLiteOpenHelper {
                 "end_time TIME," +
                 "amount_daily_recipe FLOAT," +
                 "amount_daily_expense FLOAT," +
-                "state TINYINT NOT NULL DEFAULT 0," +
-                "created_at DATETIME" +
+                "state INT(1) NOT NULL DEFAULT 0," +
+                "created_at DATETIME NOT NULL," +
+                "updated_at DATETIME" +
                 ");";
 
         sqLiteDatabase.execSQL(createTableEvent);

@@ -103,8 +103,9 @@ public class Select {
         String orders = toOrderBy();
         String[] params = args;
 
-        return database.writable
+        return  database.writable
                 .query(from, columns, selection, params, null, null, orders, limit);
+
     }
 
 

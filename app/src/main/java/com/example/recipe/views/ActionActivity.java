@@ -8,14 +8,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.recipe.R;
+import com.example.recipe.helper.Flash;
 import com.example.recipe.views.partials.Items;
 
-public class HomeActionActivity extends AppCompatActivity {
+public class ActionActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        try {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
+        }catch (Exception e) {
+            Flash.modal(ActionActivity.this, e.getMessage());
+        }
+
     }
 
     @Override
@@ -27,7 +33,7 @@ public class HomeActionActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        Items.actions(HomeActionActivity.this, item);
+        Items.actions(ActionActivity.this, item);
 
         return true;
     }

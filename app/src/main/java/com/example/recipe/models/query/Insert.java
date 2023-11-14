@@ -41,8 +41,6 @@ public class Insert {
 
         Long state = database.writable.insert(table, null, values);
 
-        database.close();
-
         return !(state == -1);
     }
 
