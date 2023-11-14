@@ -1,6 +1,6 @@
 package com.example.recipe.models.entity;
 
-public class Event {
+public class Action {
 
     private int id;
 
@@ -20,7 +20,7 @@ public class Event {
         return id;
     }
 
-    public Event setId(int id) {
+    public Action setId(int id) {
         this.id = id;
 
         return this;
@@ -30,7 +30,7 @@ public class Event {
         return startTime;
     }
 
-    public Event setStartTime(String startTime) {
+    public Action setStartTime(String startTime) {
         this.startTime = startTime;
 
         return this;
@@ -40,7 +40,7 @@ public class Event {
         return endTime;
     }
 
-    public Event setEndTime(String endTime) {
+    public Action setEndTime(String endTime) {
         this.endTime = endTime;
 
         return this;
@@ -50,7 +50,7 @@ public class Event {
         return amountDailyRecipe;
     }
 
-    public Event setAmountDailyRecipe(Float amountDailyRecipe) {
+    public Action setAmountDailyRecipe(Float amountDailyRecipe) {
         this.amountDailyRecipe = amountDailyRecipe;
 
         return this;
@@ -58,11 +58,9 @@ public class Event {
 
     public Float getAmountDailyExpense() {
         return amountDailyExpense;
-
-
     }
 
-    public Event setAmountDailyExpense(Float amountDailyExpense) {
+    public Action setAmountDailyExpense(Float amountDailyExpense) {
         this.amountDailyExpense = amountDailyExpense;
 
         return this;
@@ -72,7 +70,7 @@ public class Event {
         return created_at;
     }
 
-    public Event setCreatedAt(String created_at) {
+    public Action setCreatedAt(String created_at) {
         this.created_at = created_at;
 
         return this;
@@ -81,7 +79,7 @@ public class Event {
         return updated_at;
     }
 
-    public Event setUpdatedAt(String updated_at) {
+    public Action setUpdatedAt(String updated_at) {
         this.updated_at = updated_at;
 
         return this;

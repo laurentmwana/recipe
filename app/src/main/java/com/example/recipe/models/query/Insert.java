@@ -2,7 +2,7 @@ package com.example.recipe.models.query;
 
 import android.content.ContentValues;
 
-import com.example.expense.database.AppDatabase;
+import com.example.recipe.database.AppDatabase;
 
 public class Insert {
 

@@ -2,7 +2,7 @@ package com.example.recipe.models.query;
 
 import android.database.Cursor;
 
-import com.example.expense.database.AppDatabase;
+import com.example.recipe.database.AppDatabase;
 import java.util.ArrayList;
 import java.util.Arrays;
 

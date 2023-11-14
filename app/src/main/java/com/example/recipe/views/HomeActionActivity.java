@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.recipe.R;
+import com.example.recipe.views.partials.Items;
 
 public class HomeActionActivity extends AppCompatActivity {
 
@@ -19,13 +20,15 @@ public class HomeActionActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_event_home, menu);
+        getMenuInflater().inflate(R.menu.menu_action_home, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        return super.onOptionsItemSelected(item);
+        Items.actions(HomeActionActivity.this, item);
+
+        return true;
     }
 }
