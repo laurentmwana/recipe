@@ -44,6 +44,7 @@ public class ListingActionAdapter extends  RecyclerView.Adapter<ListingActionAda
         holder.mTextViewAmountDailyExpense.setText(Helper.endWith(action.getAmountDailyRecipe(), "Fc"));
         holder.mTextViewAmountDailyRecipe.setText(Helper.endWith(action.getAmountDailyExpense(), "Fc"));
         holder.mButtonEye.setTag(action);
+        holder.mButtonDelete.setTag(action);
     }
 
     @Override

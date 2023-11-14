@@ -9,6 +9,7 @@ import com.example.recipe.database.AppDatabase;
 import com.example.recipe.exception.NotFoundException;
 import com.example.recipe.helper.Moment;
 import com.example.recipe.models.entity.Action;
+import com.example.recipe.models.query.Delete;
 import com.example.recipe.models.query.Insert;
 import com.example.recipe.models.query.Select;
 import com.example.recipe.models.query.Update;
@@ -119,6 +120,14 @@ public class ActionRepository {
                 .from(TABLE, null)
                 .values(vs)
                 .where("id = ?").args(String.valueOf(action.getId()))
+                .save();
+    }
+
+    public boolean delete(Action action) {
+        return (new Delete(database))
+                .from(TABLE, null)
+                .where("id = ?")
+                .args(String.valueOf(action.getId()))
                 .save();
     }
 }

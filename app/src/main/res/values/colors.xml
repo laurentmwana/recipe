@@ -4,5 +4,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="color_light">#f7fafb</color>
     <color name="border_light">#d5e3ec</color>
-    <color name="colorPrimary">#3279fc</color>
+    <color name="colorPrimary">#6261c5</color>
+    <color name="colorPrimaryLight">#7d7bfd</color>
+    <color name="colorSecondary">#7d7bfd</color>
+
+
 </resources>

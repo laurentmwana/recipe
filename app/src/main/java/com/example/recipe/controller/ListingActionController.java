@@ -49,7 +49,11 @@ public class ListingActionController {
             dialogInterface.dismiss();
         });
 
-        String message = getEye();
+        String message = String.format(getEye(), action.getStartTime(),
+                action.getEndTime(),
+                action.getAmountDailyRecipe(),
+                action.getAmountDailyExpense(),
+                action.getCreatedAt());
 
         builder.setMessage(message);
 
@@ -61,22 +65,29 @@ public class ListingActionController {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
 
-        builder.setTitle("Supprimer l'action #" + action.getId());
+        builder.setTitle("Suppression");
+
+        builder.setMessage("Voulez-vous vraiment supprimer cette action ?");
 
         builder.setNegativeButton("Non", (dialogInterface, i) -> {
-
+            dialogInterface.dismiss();
         });
 
         builder.setPositiveButton("Oui", (dialogInterface, i) -> {
-
+            boolean state = repository.delete(action);
+            if (state) {
+                Flash.modal(view.getContext(), "Action supprimée avec succès.");
+            } else {
+                Flash.modal(view.getContext(), "nous n'avons pas pu supprimé l'action #" + action.getId());
+            }
         });
 
         builder.show();
     }
 
     private String getEye() {
-        return "De %s à %s\n\n Recette journalière %s\n\n " +
-                "Dépense journalière %s\n\n Date de création %s";
+        return "De %s à %s\n\n Recette journalière : %s\n\n " +
+                "Dépense journalière : %s\n\n Date de création : %s";
     }
 
 }
