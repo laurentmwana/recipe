@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingVertical="@dimen/sp18"
+    android:background="@drawable/bg_action_item_listing">
+
+    <LinearLayout
+        android:layout_marginBottom="@dimen/sp18"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+        <TextView
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp18"
+            android:padding="@dimen/sp10"
+            android:background="@drawable/bg_container"
+            android:textStyle="italic|bold"
+            android:textAlignment="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="En attente"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginBottom="@dimen/sp12"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:textColor="@color/black"
+            android:background="@drawable/bg_container"
+            android:textStyle="italic|bold"
+            app:icon="@drawable/ic_search"
+            android:padding="@dimen/sp10"
+            android:id="@+id/text_view_starttime"
+            android:text="De 20h30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:textColor="@color/black"
+            android:layout_marginStart="@dimen/sp20"
+            android:background="@drawable/bg_container"
+            android:textStyle="italic|bold"
+            android:textSize="@dimen/sp12"
+            android:padding="@dimen/sp10"
+            android:id="@+id/text_view_endtime"
+            android:text="à ?"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginBottom="@dimen/sp12"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:padding="@dimen/sp10"
+            android:background="@drawable/bg_container"
+            android:textStyle="italic|bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_marginBottom="5sp"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Recette journalière"/>
+            <TextView
+                android:id="@+id/text_view_amount_daily_recipe"
+                android:textStyle="bold|normal"
+                android:textAlignment="center"
+                android:layout_marginBottom="5sp"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="9000 Fc"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginHorizontal="@dimen/sp10"
+            android:background="@color/border_light"
+            android:layout_width="2sp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"/>
+
+        <LinearLayout
+            android:padding="@dimen/sp10"
+            android:background="@drawable/bg_container"
+            android:textStyle="italic|bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_marginBottom="5sp"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dépense journalière"/>
+            <TextView
+                android:id="@+id/text_view_amount_daily_expense"
+                android:textStyle="bold|normal"
+                android:textAlignment="center"
+                android:layout_marginBottom="5sp"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="60000 Fc"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/button_eye"
+            app:icon="@drawable/ic_eye"
+            android:text="@string/button_eye"
+            style="@style/Widget.AppCompat.Button.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/button_delete"
+            app:icon="@drawable/ic_trash"
+            android:text="@string/button_delete"
+            style="@style/Widget.AppCompat.Button.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</LinearLayout>

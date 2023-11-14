@@ -2,7 +2,6 @@ package com.example.recipe.controller;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -11,8 +10,6 @@ import com.example.recipe.helper.Flash;
 import com.example.recipe.models.entity.Action;
 import com.example.recipe.models.repository.ActionRepository;
 import com.example.recipe.validator.Validator;
-
-import java.util.Objects;
 
 public class NewActionController {
 
@@ -27,7 +24,7 @@ public class NewActionController {
         this.repository = new ActionRepository(context);
     }
 
-    public void init() {
+    public void handle() {
         // on affiche le modal
         Dialog dialog = new Dialog(context);
 

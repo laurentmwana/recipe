@@ -13,7 +13,7 @@ public abstract class Items {
         try {
             int id = menuItem.getItemId();
             if (id == R.id.item_action_home_add) {
-                (new NewActionController(start)).init();
+                (new NewActionController(start)).handle();
             }
         } catch (Exception e) {
             Flash.modal(start, e.getMessage());

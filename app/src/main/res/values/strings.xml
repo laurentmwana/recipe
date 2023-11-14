@@ -3,4 +3,8 @@
     <string name="item_name_event_home_add">Ajouter</string>
     <string name="starttime">Heure de début</string>
     <string name="button_save">Sauvegarder</string>
+    <string name="label_search">Faire une recherche</string>
+    <string name="button_search">Recherche</string>
+    <string name="button_eye">Voir</string>
+    <string name="button_delete">Supprimer</string>
 </resources>
