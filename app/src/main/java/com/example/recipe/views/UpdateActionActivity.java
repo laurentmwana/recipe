@@ -6,26 +6,28 @@ import android.os.Bundle;
 import android.view.Menu;
 
 import com.example.recipe.R;
-import com.example.recipe.controller.NewActionController;
+import com.example.recipe.controller.UpdateActionController;
 import com.example.recipe.exception.NotFoundException;
 import com.example.recipe.helper.Flash;
 import com.example.recipe.helper.Redirect;
 import com.example.recipe.models.entity.Action;
 import com.example.recipe.views.partials.CustomActionBar;
 
-public class NewActionActivity extends AppCompatActivity {
+public class UpdateActionActivity extends AppCompatActivity {
 
-    private NewActionActivity instance;
+    private UpdateActionActivity instance;
+
+    private Action action;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        instance = NewActionActivity.this;
+        instance = UpdateActionActivity.this;
         try {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_new_action);
+            setContentView(R.layout.activity_update_action);
             init();
-        }catch (Exception e) {
-            Flash.modal(NewActionActivity.this, e.getMessage());
+        } catch (Exception e) {
+            Flash.modal(instance, e.getMessage());
         }
     }
 
@@ -35,30 +37,27 @@ public class NewActionActivity extends AppCompatActivity {
         return true;
     }
 
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Redirect.route(instance, ActionActivity.class);
+        Redirect.route(instance, ShowActionActivity.class, "id", String.valueOf(action.getId()));
     }
 
     @Override
     public boolean onSupportNavigateUp() {
-        Redirect.route(instance, ActionActivity.class);
+        Redirect.route(instance, ShowActionActivity.class, "id", String.valueOf(action.getId()));
         return true;
     }
 
     private void init() throws NotFoundException {
         // initialise le controller
-        NewActionController controller = new NewActionController(instance);
+        UpdateActionController controller = new UpdateActionController(instance);
 
-        Action action = controller.getAction();
-
-        String title = (null != action) ? "Editer l'action #" + action.getId() : "Ajouter une action.";
-
-        CustomActionBar.backed(title, instance);
+        action = controller.getAction();
+        // on modifie le titre de l'action bar
+        String message = action.isState() ? "Editer"  : "Complèter";
+        CustomActionBar.backed(message + " l'action  #" + action.getId(), instance);
 
         controller.handle();
     }
-
 }

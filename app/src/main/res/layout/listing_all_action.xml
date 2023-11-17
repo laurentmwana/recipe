@@ -17,13 +17,13 @@
         <TextView
             android:textColor="@color/black"
             android:textSize="@dimen/sp18"
-            android:padding="@dimen/sp10"
+            android:padding="@dimen/sp18"
             android:background="@drawable/bg_container"
             android:textStyle="italic|bold"
             android:textAlignment="center"
-            android:layout_width="wrap_content"
+            android:layout_width="130sp"
             android:layout_height="wrap_content"
-            android:text="En attente"/>
+            android:text="@string/action_state"/>
     </LinearLayout>
 
     <LinearLayout
@@ -37,22 +37,22 @@
             android:background="@drawable/bg_container"
             android:textStyle="italic|bold"
             app:icon="@drawable/ic_search"
-            android:padding="@dimen/sp10"
+            android:padding="@dimen/sp15"
             android:id="@+id/text_view_starttime"
-            android:text="De 20h30"
-            android:layout_width="wrap_content"
+            android:textAlignment="center"
+            android:layout_width="100sp"
             android:layout_height="wrap_content"/>
 
         <TextView
             android:textColor="@color/black"
-            android:layout_marginStart="@dimen/sp20"
+            android:layout_marginStart="@dimen/sp10"
             android:background="@drawable/bg_container"
             android:textStyle="italic|bold"
             android:textSize="@dimen/sp12"
-            android:padding="@dimen/sp10"
+            android:textAlignment="center"
+            android:padding="@dimen/sp15"
             android:id="@+id/text_view_endtime"
-            android:text="à ?"
-            android:layout_width="wrap_content"
+            android:layout_width="100sp"
             android:layout_height="wrap_content"/>
 
     </LinearLayout>
@@ -67,16 +67,17 @@
             android:padding="@dimen/sp10"
             android:background="@drawable/bg_container"
             android:textStyle="italic|bold"
-            android:layout_width="wrap_content"
+            android:layout_width="130sp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
+                android:textAlignment="center"
                 android:layout_marginBottom="5sp"
                 android:textSize="15sp"
                 android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Recette journalière"/>
+                android:text="@string/amount_daily_recipe"/>
             <TextView
                 android:id="@+id/text_view_amount_daily_recipe"
                 android:textStyle="bold|normal"
@@ -85,12 +86,11 @@
                 android:textSize="18sp"
                 android:textColor="@color/black"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="9000 Fc"/>
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginHorizontal="@dimen/sp10"
+            android:layout_marginHorizontal="@dimen/sp5"
             android:background="@color/border_light"
             android:layout_width="2sp"
             android:layout_height="match_parent"
@@ -100,50 +100,37 @@
             android:padding="@dimen/sp10"
             android:background="@drawable/bg_container"
             android:textStyle="italic|bold"
-            android:layout_width="wrap_content"
+            android:layout_width="130sp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
+                android:textAlignment="center"
                 android:layout_marginBottom="5sp"
                 android:textSize="15sp"
                 android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Dépense journalière"/>
+                android:text="@string/amount_daily_expense"/>
             <TextView
+                android:textAlignment="center"
                 android:id="@+id/text_view_amount_daily_expense"
                 android:textStyle="bold|normal"
-                android:textAlignment="center"
                 android:layout_marginBottom="5sp"
-                android:textSize="18sp"
+                android:textSize="17sp"
                 android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="60000 Fc"/>
+                />
         </LinearLayout>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:gravity="center"
-        android:layout_width="match_parent"
+    <Button
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:id="@+id/button_more"
+        app:icon="@drawable/ic_more_vertical"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/button_eye"
-            app:icon="@drawable/ic_eye"
-            android:text="@string/button_eye"
-            style="@style/Widget.AppCompat.Button.Small"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <Button
-            android:id="@+id/button_delete"
-            app:icon="@drawable/ic_trash"
-            android:text="@string/button_delete"
-            style="@style/Widget.AppCompat.Button.Small"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
+        android:text="@string/more"/>
 </LinearLayout>

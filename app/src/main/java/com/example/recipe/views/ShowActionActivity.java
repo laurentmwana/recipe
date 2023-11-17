@@ -1,40 +1,50 @@
 package com.example.recipe.views;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 
 import com.example.recipe.R;
-import com.example.recipe.controller.NewActionController;
+import com.example.recipe.controller.ShowActionController;
 import com.example.recipe.exception.NotFoundException;
 import com.example.recipe.helper.Flash;
 import com.example.recipe.helper.Redirect;
-import com.example.recipe.models.entity.Action;
 import com.example.recipe.views.partials.CustomActionBar;
+import com.example.recipe.views.partials.Items;
 
-public class NewActionActivity extends AppCompatActivity {
+public class ShowActionActivity extends AppCompatActivity {
 
-    private NewActionActivity instance;
+    private ShowActionActivity instance;
+
+    public ShowActionController controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        instance = NewActionActivity.this;
+        instance = ShowActionActivity.this;
         try {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_new_action);
+            setContentView(R.layout.activity_show_action);
             init();
-        }catch (Exception e) {
-            Flash.modal(NewActionActivity.this, e.getMessage());
+        } catch (NotFoundException e) {
+            Flash.modal(instance, e.getMessage());
         }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_empty, menu);
+        getMenuInflater().inflate(R.menu.menu_show_action, menu);
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        Items.showAction(instance, item);
+        return true;
+    }
 
     @Override
     public void onBackPressed() {
@@ -49,16 +59,13 @@ public class NewActionActivity extends AppCompatActivity {
     }
 
     private void init() throws NotFoundException {
+
         // initialise le controller
-        NewActionController controller = new NewActionController(instance);
+        controller = new ShowActionController(instance);
 
-        Action action = controller.getAction();
-
-        String title = (null != action) ? "Editer l'action #" + action.getId() : "Ajouter une action.";
-
-        CustomActionBar.backed(title, instance);
+        // activer le bouton "retour vers la page précédente"
+        CustomActionBar.backed("Action #" + controller.getAction().getId(), instance);
 
         controller.handle();
     }
-
 }

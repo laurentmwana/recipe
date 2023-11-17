@@ -8,13 +8,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.recipe.R;
+import com.example.recipe.exception.NotFoundException;
 import com.example.recipe.helper.Flash;
+import com.example.recipe.helper.Picker;
 import com.example.recipe.helper.Redirect;
+import com.example.recipe.helper.Shared;
 import com.example.recipe.models.entity.Action;
 import com.example.recipe.models.repository.ActionRepository;
 import com.example.recipe.validator.Validator;
 import com.example.recipe.views.ActionActivity;
 import com.example.recipe.views.NewActionActivity;
+import com.example.recipe.views.ShowActionActivity;
 
 public class NewActionController {
 
@@ -33,70 +37,57 @@ public class NewActionController {
         this.repository = new ActionRepository(context);
     }
 
-    public void handle() {
+    public void handle() throws NotFoundException {
 
         mTextViewStartTime = (TextView) context.findViewById(R.id.text_view_start_time);
         mButtonSave = (Button) context.findViewById(R.id.button_save);
-
-        // on vérifie
-        Action action = repository.findState();
-        if (null != action) {
-            mTextViewStartTime.setText(action.getStartTime());
-        }
 
         addListeners();
     }
 
     private void addListeners() {
-        mTextViewStartTime.setOnClickListener(this::onCustomPicker);
-        mButtonSave.setOnClickListener(this::onSave);
-    }
+        Action action = getAction();
+        if (null != action) {
+            mTextViewStartTime.setText(action.getStartTime());
+        }
+        mTextViewStartTime.setOnClickListener((view -> Picker.onTime(mTextViewStartTime)));
+        mButtonSave.setOnClickListener((view -> {
+            Validator validator = new Validator();
 
-    private void onCustomPicker(View view) {
-        TimePickerDialog dialog = new TimePickerDialog(view.getContext(), (timePicker, hours, minute) -> {
-            String time = hours + ":" + minute;
-            mTextViewStartTime.setText(time);
-        }, 12, 30, false);
-        dialog.show();
-    }
+            validator.isTime(mTextViewStartTime);
 
-    private void onSave(View view) {
-
-        Validator validator = new Validator();
-
-        validator.isTime(mTextViewStartTime);
-
-        if (validator.hasError()) {
-            Action action = repository.findState();
-
-            if (null != action) {
-                action.setStartTime(mTextViewStartTime.getText().toString());
-                repository.startedUpdate(action);
+            if (validator.hasError()) {
+                // on récupère l'action
+                String v = mTextViewStartTime.getText().toString();
+                if (null == action) {
+                    onNew(repository.startedAdd(v));
+                } else {
+                    action.setStartTime(v);
+                    onUpdate(action);
+                }
             } else {
-                repository.startedAdd(mTextViewStartTime.getText().toString());
+                Flash.modal(context, String.join("\n\n", validator.errors));
             }
+        }));
+    }
 
-            Flash.modal(context, "Action a été mis à jour.");
-
+    private void onNew(boolean c) {
+        String message = c ? "Action ajoutée avec succès." : "Nous n'avons pas pu effetcuer cette action.";
+        Flash.ok(context, message, (dialogInterface, i) -> {
             Redirect.route(context, ActionActivity.class);
-
-        }
+        });
     }
 
-    private void created(Context context, boolean created) {
-        if (created) {
-            Flash.modal(context, "l'heure du début a bien été enregistrée");
-        } else {
-            Flash.modal(context, "nous n'avons pas pu enregistré l'heure de début.");
-        }
+    private void onUpdate(Action action) {
+        String message = repository.startedUpdate(action) ?
+                "l'action #" + action.getId()  + " a bien été modifié."
+                : "Nous n'avons pas pu effetcuer cette action.";
+        Flash.ok(context, message, (dialogInterface, i) -> {
+            Redirect.route(context, ShowActionActivity.class, "id", String.valueOf(action.getId()));
+        });
     }
 
-    private void updated(Context context, boolean updated) {
-        if (updated) {
-            Flash.modal(context, "l'heure du début a bien été modifié");
-        } else {
-            Flash.modal(context, "nous n'avons pas pu modifié l'heure de début.");
-        }
+    public Action getAction() {
+        return  repository.findState();
     }
-
 }

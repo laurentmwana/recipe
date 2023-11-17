@@ -27,6 +27,14 @@ public abstract class Flash {
     }
 
 
+    public static void ok(Context c, String message, DialogInterface.OnClickListener onOk) {
+        (new AlertDialog.Builder(c))
+                .setTitle("Message")
+                .setMessage(message)
+                .setNeutralButton("Ok", onOk).show();
+
+    }
+
     public static void modal(Context c,
                              String message,
                              DialogInterface.OnClickListener positive,

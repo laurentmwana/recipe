@@ -8,6 +8,7 @@ import com.example.recipe.helper.Redirect;
 import com.example.recipe.views.ActionActivity;
 import com.example.recipe.views.FilterActivity;
 import com.example.recipe.views.NewActionActivity;
+import com.example.recipe.views.ShowActionActivity;
 
 public abstract class Items {
 
@@ -21,6 +22,21 @@ public abstract class Items {
             }
         } catch (Exception e) {
             Flash.modal(start, e.getMessage());
+        }
+    }
+
+    public static void showAction(ShowActionActivity context, MenuItem menuItem) {
+        try {
+            int id = menuItem.getItemId();
+            if (id == R.id.show_edit) {
+               context.controller.OnRedirectEdit();
+            } else if (id == R.id.show_delete) {
+                context.controller.onDelete();
+            } else if (id == R.id.show_back_home) {
+                Redirect.route(context, ActionActivity.class);
+            }
+        } catch (Exception e) {
+            Flash.modal(context, e.getMessage());
         }
     }
 }

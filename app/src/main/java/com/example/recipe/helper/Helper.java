@@ -2,15 +2,15 @@ package com.example.recipe.helper;
 
 public abstract class Helper {
 
-    public static String startWith(String start, String end) {
+    public static String preffix(String start, String end) {
         return start  + " " + end;
     }
 
-    public static String endWith(String start, String end) {
+    public static String suffix(String start, String end) {
         return start  + " " + end;
     }
 
-    public static String endWith(Float start, String end) {
+    public static String suffix(Float start, String end) {
         return start  + " " + end;
     }
 

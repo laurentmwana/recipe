@@ -6,25 +6,27 @@ import android.os.Bundle;
 import android.view.Menu;
 
 import com.example.recipe.R;
-import com.example.recipe.controller.FilterController;
+import com.example.recipe.controller.CompleteActioncontroller;
+import com.example.recipe.exception.NotFoundException;
 import com.example.recipe.helper.Flash;
 import com.example.recipe.views.partials.CustomActionBar;
 
-public class FilterActivity extends AppCompatActivity {
+public class CompleteActivity extends AppCompatActivity {
 
     private AppCompatActivity instance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        instance = FilterActivity.this;
         try {
+            instance = CompleteActivity.this;
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_filter);
-            init();
+            setContentView(R.layout.activity_complete);
         }catch (Exception e) {
-            Flash.modal(FilterActivity.this, e.getMessage());
+            Flash.modal(instance, e.getMessage());
         }
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -32,11 +34,12 @@ public class FilterActivity extends AppCompatActivity {
         return true;
     }
 
-    private void init() {
+    private void init() throws NotFoundException {
+
         // activer le bouton "retour vers la page précédente"
-        CustomActionBar.backed("Filtrer par", instance);
+        CustomActionBar.backed("Finalisation", instance);
 
         // initialise le controller
-        (new FilterController(this)).handle();
+        (new CompleteActioncontroller(this)).handle();
     }
 }

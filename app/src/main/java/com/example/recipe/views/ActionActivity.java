@@ -10,7 +10,7 @@ import android.view.MenuItem;
 import com.example.recipe.R;
 import com.example.recipe.controller.ListingActionController;
 import com.example.recipe.helper.Flash;
-import com.example.recipe.views.partials.ActionBar;
+import com.example.recipe.views.partials.CustomActionBar;
 import com.example.recipe.views.partials.Items;
 
 public class ActionActivity extends AppCompatActivity {
@@ -19,7 +19,7 @@ public class ActionActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        ActionBar.set("Actions", ActionActivity.this);
+        CustomActionBar.set("Actions", ActionActivity.this);
     }
 
     @Override

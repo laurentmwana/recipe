@@ -16,21 +16,52 @@
 
         <LinearLayout
             android:layout_marginBottom="@dimen/sp12"
-            android:padding="@dimen/sp12"
+            android:padding="@dimen/sp15"
             android:background="@drawable/bg_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <EditText
-                android:hint="@string/label_search"
-                android:id="@+id/edit_text_start_time"
-                style="@style/field"
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/sp46"
-                android:inputType="text"
-                android:labelFor="@id/text_view_starttime"
-                android:layout_marginBottom="@dimen/sp10"
-                />
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/filter_date"
+                    style="@style/label"/>
+                <TextView
+                    android:id="@+id/text_view_filter_date"
+                    style="@style/field"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/sp46"
+                    android:layout_marginBottom="@dimen/sp10"
+                    />
+            </LinearLayout>
+
+            <include layout="@layout/divised"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/filter_date"
+                    style="@style/filter_order"/>
+                <Spinner
+                    android:id="@+id/edit"
+                    style="@style/field"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/sp46"
+                    android:layout_marginBottom="@dimen/sp10"
+
+                    />
+            </LinearLayout>
+
             <Button
                 android:id="@+id/button_save"
                 app:icon="@drawable/ic_filter"

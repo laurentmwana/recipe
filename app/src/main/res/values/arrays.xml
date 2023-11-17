@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="action_options">
+        <item>Editer l\'heure de début</item>
+        <item>En savoir plus sur l\'action</item>
+    </string-array>
+</resources>

@@ -39,12 +39,11 @@ public class ListingActionAdapter extends  RecyclerView.Adapter<ListingActionAda
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         Action action = actions.get(position);
-        holder.mTextViewStartTime.setText(Helper.startWith("De", action.getStartTime()));
-        holder.mTextViewEndTime.setText(Helper.startWith("à", action.getEndTime()));
-        holder.mTextViewAmountDailyExpense.setText(Helper.endWith(action.getAmountDailyRecipe(), "Fc"));
-        holder.mTextViewAmountDailyRecipe.setText(Helper.endWith(action.getAmountDailyExpense(), "Fc"));
-        holder.mButtonEye.setTag(action);
-        holder.mButtonDelete.setTag(action);
+        holder.mTextViewStartTime.setText(Helper.preffix("De", action.getStartTime()));
+        holder.mTextViewEndTime.setText(Helper.preffix("à", action.getEndTime()));
+        holder.mTextViewAmountDailyExpense.setText(Helper.suffix(action.getAmountDailyRecipe(), "Fc"));
+        holder.mTextViewAmountDailyRecipe.setText(Helper.suffix(action.getAmountDailyExpense(), "Fc"));
+        holder.mButtonOption.setTag(action);
     }
 
     @Override
@@ -56,17 +55,18 @@ public class ListingActionAdapter extends  RecyclerView.Adapter<ListingActionAda
 
         public TextView mTextViewStartTime;
 
+
         public TextView mTextViewEndTime;
 
         public TextView mTextViewAmountDailyRecipe;
 
         public TextView mTextViewAmountDailyExpense;
 
-        public Button mButtonEye;
+        public Button mButtonOption;
 
-        public Button mButtonDelete;
 
         private View view;
+
         private ListingActionController controller;
 
         public ViewHolder(@NonNull View view, ListingActionController controller) {
@@ -87,18 +87,14 @@ public class ListingActionAdapter extends  RecyclerView.Adapter<ListingActionAda
             mTextViewAmountDailyExpense = (TextView) view.findViewById(R.id.text_view_amount_daily_expense);
             mTextViewAmountDailyRecipe = (TextView) view.findViewById(R.id.text_view_amount_daily_recipe);
 
-            // les boutons d'actions
-            mButtonEye = (Button) view.findViewById(R.id.button_eye);
-            mButtonDelete = (Button) view.findViewById(R.id.button_delete);
+            mButtonOption = (Button) view.findViewById(R.id.button_more);
 
             addListners();
 
         }
         private void addListners() {
-            // on affiche un modal pour affiche
-            mButtonEye.setOnClickListener(controller::onEye);
-            // lorsqu'on veut supprimer l'action
-            mButtonDelete.setOnClickListener(controller::onDelete);
+            mButtonOption.setOnClickListener(controller::onOption);
         }
+
     }
 }

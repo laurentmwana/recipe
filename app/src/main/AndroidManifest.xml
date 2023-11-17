@@ -13,14 +13,20 @@
         android:theme="@style/Theme.Recipe"
         tools:targetApi="31">
         <activity
+            android:name=".views.UpdateActionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.ShowActionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.CompleteActivity"
+            android:exported="false" />
+        <activity
             android:name=".views.NewActionActivity"
-            android:exported="false"
-            android:parentActivityName=".views.ActionActivity"
-            />
+            android:exported="false" />
         <activity
             android:name=".views.FilterActivity"
-            android:exported="false"
-            android:parentActivityName=".views.ActionActivity" />
+            android:exported="false" />
         <activity
             android:name=".views.ActionActivity"
             android:exported="true">
@@ -31,5 +37,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

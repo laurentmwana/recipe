@@ -3,9 +3,11 @@ package com.example.recipe.validator;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class Validator {
 
-    private boolean stateError = false;
+    public ArrayList<String> errors = new ArrayList<>();
 
     public Validator regex(EditText editText, String regex) {
 
@@ -83,7 +85,7 @@ public class Validator {
     }
 
     public boolean hasError() {
-        return !stateError;
+        return !errors.isEmpty();
     }
 
     private String getData(EditText editText) {
@@ -94,13 +96,13 @@ public class Validator {
         String m = ErrorMessageValidator.getMessage(key);
         String format = String.format(m, objects);
         editText.setError(format);
-        stateError = true;
+        errors.add(format);
     }
 
     private void addError(TextView editText, String key,  Object... objects) {
         String m = ErrorMessageValidator.getMessage(key);
         String format = String.format(m, objects);
         editText.setError(format);
-        stateError = true;
+        errors.add(format);
     }
 }
