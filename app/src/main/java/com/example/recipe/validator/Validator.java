@@ -1,6 +1,7 @@
 package com.example.recipe.validator;
 
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class Validator {
 
@@ -11,6 +12,16 @@ public class Validator {
         RuleValidator rule = new RuleValidator(getData(editText));
         if (rule.regex(regex)) {
             addError(editText, "regex");
+        }
+
+        return this;
+    }
+
+    public Validator isTime(TextView textView) {
+
+        RuleValidator rule = new RuleValidator(textView.getText().toString());
+        if (rule.regex("^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$")) {
+            addError(textView, "time");
         }
 
         return this;
@@ -86,5 +97,10 @@ public class Validator {
         stateError = true;
     }
 
-
+    private void addError(TextView editText, String key,  Object... objects) {
+        String m = ErrorMessageValidator.getMessage(key);
+        String format = String.format(m, objects);
+        editText.setError(format);
+        stateError = true;
+    }
 }

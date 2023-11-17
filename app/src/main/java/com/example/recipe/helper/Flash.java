@@ -27,4 +27,18 @@ public abstract class Flash {
     }
 
 
+    public static void modal(Context c,
+                             String message,
+                             DialogInterface.OnClickListener positive,
+                             DialogInterface.OnClickListener negative) {
+
+        (new AlertDialog.Builder(c))
+                .setTitle("Message")
+                .setMessage(message)
+                .setPositiveButton("Oui", positive)
+                .setNegativeButton("Non", negative)
+                .show();
+
+    }
+
 }

@@ -94,7 +94,6 @@ public class ListingActionAdapter extends  RecyclerView.Adapter<ListingActionAda
             addListners();
 
         }
-
         private void addListners() {
             // on affiche un modal pour affiche
             mButtonEye.setOnClickListener(controller::onEye);

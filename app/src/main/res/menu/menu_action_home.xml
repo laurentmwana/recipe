@@ -3,8 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:icon="@drawable/ic_plus"
-        android:title="@string/item_name_event_home_add"
-        android:id="@+id/item_action_home_add"
+        android:title="@string/item_name_action_add"
+        android:id="@+id/item_action_add"
+        app:showAsAction="always"
+        />
+    <item
+        android:icon="@drawable/ic_filter"
+        android:id="@+id/item_action_filter"
+        android:title="@string/item_name_action_filter"
+        app:showAsAction="always"
+        />
+
+    <item
+        android:icon="@drawable/ic_stat"
+        android:title="@string/item_name_action_stat"
+        android:id="@+id/item_action_rapport_stat"
         app:showAsAction="ifRoom"
         />
+    <item
+        android:id="@+id/item_action_expense"
+        android:title="@string/item_name_action_expense"
+        app:showAsAction="never"
+        />
+
 </menu>

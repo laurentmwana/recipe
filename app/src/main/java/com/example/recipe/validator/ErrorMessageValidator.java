@@ -18,6 +18,7 @@ public abstract class ErrorMessageValidator {
         err.put("between", "ce champs doit avoir entre %s et %s caractère(s).");
         err.put("positive", "ce champs doit avoir un nombre supérieur à zéro.");
         err.put("number", "ce champs doit avoir une valeur supérieur à zéro.");
+        err.put("time", "heure invalide.");
 
         return err;
     }

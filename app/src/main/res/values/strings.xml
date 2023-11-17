@@ -7,4 +7,9 @@
     <string name="button_search">Recherche</string>
     <string name="button_eye">Voir</string>
     <string name="button_delete">Supprimer</string>
+    <string name="button_filter">Filtrer</string>
+    <string name="item_name_action_add">Ajouter une action</string>
+    <string name="item_name_action_stat">Rapport statistique</string>
+    <string name="item_name_action_expense">Dépenses et commentaire</string>
+    <string name="item_name_action_filter">Filtrer par</string>
 </resources>

@@ -5,6 +5,7 @@
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingVertical="@dimen/sp18"
+    android:paddingHorizontal="@dimen/sp10"
     android:background="@drawable/bg_action_item_listing">
 
     <LinearLayout

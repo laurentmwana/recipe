@@ -130,4 +130,25 @@ public class ActionRepository {
                 .args(String.valueOf(action.getId()))
                 .save();
     }
+
+    public ArrayList<Action> like(String v) {
+        // on recupère les données depuis la base de données
+        Cursor cs = (new Select(database))
+                 .from(TABLE, null)
+                .select(columns)
+                .where("start_time LIKE ?")
+                .orWhere("end_time LIKE ?", "amount_daily_recipe LIKE ?")
+                .orderBy("created_at", "DESC")
+                .params(v, v, v)
+                .execute();
+
+        ArrayList<Action> ev = new ArrayList<Action>();
+
+        // on fait l'hydratation
+        // pour avoir les données sous forme d'objets
+        while (cs.moveToNext()) {
+            ev.add(getHydrate(cs));
+        }
+        return ev;
+    }
 }

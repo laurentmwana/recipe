@@ -2,8 +2,14 @@ package com.example.recipe.controller;
 
 import android.app.AlertDialog;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.recipe.R;
 import com.example.recipe.adapters.ListingActionAdapter;
@@ -20,6 +26,10 @@ public class ListingActionController {
 
     private ActionRepository repository;
 
+    private RecyclerView mRecyclerViewContainer;
+
+    private ListingActionAdapter adapter;
+
     public ListingActionController(ActionActivity context) {
 
         this.context = context;
@@ -29,16 +39,21 @@ public class ListingActionController {
 
     public void handle() {
 
-        RecyclerView mRecyclerViewContainer = (RecyclerView) context.findViewById(R.id.recyclerview_action_container);
+        mRecyclerViewContainer = (RecyclerView) context.findViewById(R.id.recyclerview_action_container);
 
         // on commence par recupère toutes les actions effectuée
         ArrayList<Action> actions = repository.findAll();
 
+        // adapters
+        adapter = new ListingActionAdapter(this, actions);
+
         // on affiche les résultats dans le view
-        mRecyclerViewContainer.setAdapter( new ListingActionAdapter(this, actions));
+        mRecyclerViewContainer.setAdapter(adapter);
     }
 
-    public void onEye(View view) {
+
+    public void onEye(@NonNull View view) {
+
         Action action = (Action) view.getTag();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
@@ -60,7 +75,8 @@ public class ListingActionController {
         builder.show();
     }
 
-    public void onDelete(View view) {
+    public void onDelete(@NonNull View view) {
+
         Action action = (Action) view.getTag();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
@@ -74,8 +90,10 @@ public class ListingActionController {
         });
 
         builder.setPositiveButton("Oui", (dialogInterface, i) -> {
+
             boolean state = repository.delete(action);
             if (state) {
+                handle();
                 Flash.modal(view.getContext(), "Action supprimée avec succès.");
             } else {
                 Flash.modal(view.getContext(), "nous n'avons pas pu supprimé l'action #" + action.getId());
