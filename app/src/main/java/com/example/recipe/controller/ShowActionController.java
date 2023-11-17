@@ -102,7 +102,7 @@ public class ShowActionController {
 
     private void onComplete(View view) throws NotFoundException {
         Action action = getAction();
-        Redirect.route(context, UpdateActionActivity.class, "id", String.valueOf(action.getId()));
+        Redirect.route(context, CompleteActivity.class, "id", String.valueOf(action.getId()));
     }
 
 }

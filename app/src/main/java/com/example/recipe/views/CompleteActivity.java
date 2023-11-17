@@ -21,6 +21,7 @@ public class CompleteActivity extends AppCompatActivity {
             instance = CompleteActivity.this;
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_complete);
+            init();
         }catch (Exception e) {
             Flash.modal(instance, e.getMessage());
         }

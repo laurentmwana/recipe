@@ -151,4 +151,19 @@ public class ActionRepository {
         }
         return ev;
     }
+
+    public boolean update(Action action) {
+        ContentValues vs = new ContentValues();
+        vs.put("start_time", action.getStartTime());
+        vs.put("end_time", action.getEndTime());
+        vs.put("amount_daily_recipe", action.getAmountDailyRecipe());
+        vs.put("amount_daily_expense", action.getAmountDailyExpense());
+        vs.put("state", 1);
+        vs.put("updated_at", Moment.at());
+        return (new Update(database))
+                .from(TABLE, null)
+                .values(vs)
+                .where("id = ?").args(String.valueOf(action.getId()))
+                .save();
+    }
 }
