@@ -43,6 +43,7 @@ public class ActionRepository {
         ContentValues values = new ContentValues();
         values.put("start_time", start);
         values.put("created_at", Moment.at());
+        values.put("updated_at", Moment.at());
 
         return (new Insert(database)).from(TABLE).values(values).save();
     }

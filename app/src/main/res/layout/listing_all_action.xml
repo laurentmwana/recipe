@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingVertical="@dimen/sp18"
     android:paddingHorizontal="@dimen/sp10"
+    android:layout_marginBottom="@dimen/sp20"
     android:background="@drawable/bg_action_item_listing">
 
     <LinearLayout
@@ -15,6 +16,7 @@
         android:gravity="center"
         android:orientation="vertical">
         <TextView
+            android:id="@+id/text_view_state"
             android:textColor="@color/black"
             android:textSize="@dimen/sp18"
             android:padding="@dimen/sp18"
@@ -37,6 +39,7 @@
             android:background="@drawable/bg_container"
             android:textStyle="italic|bold"
             app:icon="@drawable/ic_search"
+            android:textSize="@dimen/sp16"
             android:padding="@dimen/sp15"
             android:id="@+id/text_view_starttime"
             android:textAlignment="center"
@@ -48,7 +51,7 @@
             android:layout_marginStart="@dimen/sp10"
             android:background="@drawable/bg_container"
             android:textStyle="italic|bold"
-            android:textSize="@dimen/sp12"
+            android:textSize="@dimen/sp16"
             android:textAlignment="center"
             android:padding="@dimen/sp15"
             android:id="@+id/text_view_endtime"
@@ -128,7 +131,7 @@
     <Button
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:id="@+id/button_more"
-        app:icon="@drawable/ic_more_vertical"
+        app:icon="@drawable/ic_eye"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

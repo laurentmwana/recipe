@@ -17,11 +17,17 @@
     <string name="endtime">Heure de fin</string>
     <string name="amount_daily_recipe">Recette journalière</string>
     <string name="amount_daily_expense">Dépense journalière</string>
-    <string name="more">Options</string>
+    <string name="more">En savoir plus</string>
     <string name="show_edit">Editer</string>
     <string name="show_edit_starttime">Editer l\'heure de début</string>
     <string name="show_delete">Supprimer</string>
     <string name="button_edit">Editer</string>
     <string name="action_state">Début</string>
     <string name="show_back_home">Page d\'accueil</string>
+    <string name="show_start_time">Heure de début : </string>
+    <string name="show_end_time">Heure de fin : </string>
+    <string name="show_amount_daily_recipe">Le montant de la recette journalière  : </string>
+    <string name="show_amount_daily_expense">Le montant des dépenses journalières  : </string>
+    <string name="show_created_at">Date de création : </string>
+    <string name="show_updated_at">Dernière modification : </string>
 </resources>

@@ -39,6 +39,9 @@ public class ListingActionAdapter extends  RecyclerView.Adapter<ListingActionAda
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         Action action = actions.get(position);
+        if (action.isState()) {
+            holder.mTextViewState.setText("Finalisée");
+        }
         holder.mTextViewStartTime.setText(Helper.preffix("De", action.getStartTime()));
         holder.mTextViewEndTime.setText(Helper.preffix("à", action.getEndTime()));
         holder.mTextViewAmountDailyExpense.setText(Helper.suffix(action.getAmountDailyRecipe(), "Fc"));
@@ -53,14 +56,9 @@ public class ListingActionAdapter extends  RecyclerView.Adapter<ListingActionAda
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView mTextViewStartTime;
+        public TextView mTextViewStartTime, mTextViewEndTime, mTextViewState;
 
-
-        public TextView mTextViewEndTime;
-
-        public TextView mTextViewAmountDailyRecipe;
-
-        public TextView mTextViewAmountDailyExpense;
+        public TextView mTextViewAmountDailyRecipe, mTextViewAmountDailyExpense;
 
         public Button mButtonOption;
 
@@ -81,6 +79,8 @@ public class ListingActionAdapter extends  RecyclerView.Adapter<ListingActionAda
         private void init() {
 
             // initialisation
+            mTextViewState = (TextView) view.findViewById(R.id.text_view_state);
+
             mTextViewStartTime = (TextView) view.findViewById(R.id.text_view_starttime);
             mTextViewEndTime = (TextView) view.findViewById(R.id.text_view_endtime);
 

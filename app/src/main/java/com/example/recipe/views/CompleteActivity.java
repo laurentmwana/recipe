@@ -17,8 +17,8 @@ public class CompleteActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        instance = CompleteActivity.this;
         try {
-            instance = CompleteActivity.this;
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_complete);
             init();

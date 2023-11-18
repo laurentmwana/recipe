@@ -1,10 +1,6 @@
 package com.example.recipe.controller;
 
-import android.app.TimePickerDialog;
-import android.content.Context;
-import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.recipe.R;
@@ -12,7 +8,6 @@ import com.example.recipe.exception.NotFoundException;
 import com.example.recipe.helper.Flash;
 import com.example.recipe.helper.Picker;
 import com.example.recipe.helper.Redirect;
-import com.example.recipe.helper.Shared;
 import com.example.recipe.models.entity.Action;
 import com.example.recipe.models.repository.ActionRepository;
 import com.example.recipe.validator.Validator;
@@ -56,7 +51,7 @@ public class NewActionController {
 
             validator.isTime(mTextViewStartTime);
 
-            if (validator.hasError()) {
+            if (validator.isValid()) {
                 // on récupère l'action
                 String v = mTextViewStartTime.getText().toString();
                 if (null == action) {

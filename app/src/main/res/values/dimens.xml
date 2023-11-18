@@ -7,5 +7,6 @@
     <dimen name="sp18">18sp</dimen>
     <dimen name="sp15">15sp</dimen>
     <dimen name="sp5">5sp</dimen>
+    <dimen name="sp16">16sp</dimen>
 
 </resources>

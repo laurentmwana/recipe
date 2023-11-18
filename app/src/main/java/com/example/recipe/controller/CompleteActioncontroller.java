@@ -15,6 +15,8 @@ import com.example.recipe.models.entity.Action;
 import com.example.recipe.models.repository.ActionRepository;
 import com.example.recipe.validator.Validator;
 import com.example.recipe.views.CompleteActivity;
+import com.example.recipe.views.ShowActionActivity;
+import com.example.recipe.views.UpdateActionActivity;
 
 public class CompleteActioncontroller {
 
@@ -30,22 +32,20 @@ public class CompleteActioncontroller {
 
     private Action action;
 
-    public CompleteActioncontroller(CompleteActivity context) {
+    public CompleteActioncontroller(CompleteActivity context) throws NotFoundException {
 
         this.context = context;
 
         this.repository = new ActionRepository(context);
+
+        this.action = getAction();
+    }
+
+    private Action getAction() throws NotFoundException {
+        return repository.find(Shared.getId(context));
     }
 
     public void handle() throws NotFoundException {
-        int id = Integer.parseInt(Shared.getId(context));
-        if (id < 1) {
-            throw new NotFoundException("nous n'avons trouvé aucune action qui a l'id #" + id);
-        }
-        action = repository.find(String.valueOf(id));
-        if (null == action) {
-            throw new NotFoundException("nous n'avons trouvé aucune action qui a l'id #" + id);
-        }
 
         // initialisation
         init();
@@ -54,6 +54,8 @@ public class CompleteActioncontroller {
     }
 
     private void addListeners() {
+
+        mTextViewStartTime.setText(action.getStartTime());
         mTextViewStartTime.setOnClickListener((view -> Picker.onTime(mTextViewStartTime)));
         mTextViewEndTime.setOnClickListener((view -> Picker.onTime(mTextViewEndTime)));
         mButtonSave.setOnClickListener(this::onSave);
@@ -62,31 +64,32 @@ public class CompleteActioncontroller {
     private void onSave(View view) {
         Validator validator = new Validator();
 
-        validator.isTime(mTextViewEndTime).isTime(mTextViewEndTime);
+        validator.isTime(mTextViewStartTime).isTime(mTextViewEndTime);
 
-        validator.required(mEditTextAmountDailyExpense, mEditTextAmountDailyRecipe);
+        validator.positive(mEditTextAmountDailyRecipe, mEditTextAmountDailyExpense);
 
-        validator.positive(mEditTextAmountDailyExpense, mEditTextAmountDailyExpense);
+        if (validator.isValid())  {
+            Action hydrate = hydrate();
+            boolean updated = repository.update(hydrate);
+            String message = updated ? "votre action a été finalisé." : "nous n'avons pas pu finalisé l'action";
+            Flash.ok(context, message, (dialogInterface, i) -> {
+                Redirect.route(context, ShowActionActivity.class, "id", String.valueOf(action.getId()));
+            });
 
-        if (validator.hasError())  {
-            hydrate();
-            String message = (repository.update(action))
-                    ? "votre action a été finalisé."
-                    : "nous n'avons pas pu finalisé l'action";
-
-            Redirect.route(context, ShowActionController.class, "id", String.valueOf(action.getId()));
         } else {
             Flash.modal(context, String.join("\n\n", validator.errors));
         }
     }
-
-    private void hydrate() {
+    private Action hydrate() {
         action.setStartTime(mTextViewStartTime.getText().toString());
         action.setEndTime(mTextViewEndTime.getText().toString());
         action.setAmountDailyExpense(Float.parseFloat(mEditTextAmountDailyExpense.getText().toString()));
         action.setAmountDailyRecipe(Float.parseFloat(mEditTextAmountDailyRecipe.getText().toString()));
         action.setState(1);
+        return action;
     }
+
+
 
     private void init() {
         mTextViewStartTime = (TextView) context.findViewById(R.id.text_view_start_time);

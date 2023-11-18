@@ -84,8 +84,8 @@ public class Validator {
         return this;
     }
 
-    public boolean hasError() {
-        return !errors.isEmpty();
+    public boolean isValid() {
+        return errors.isEmpty();
     }
 
     private String getData(EditText editText) {
