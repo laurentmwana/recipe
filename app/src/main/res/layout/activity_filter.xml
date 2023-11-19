@@ -7,6 +7,8 @@
     tools:context=".views.FilterActivity"
     android:padding="@dimen/sp20"
     android:background="@color/color_light"
+    android:scrollbars="none"
+    android:fillViewport="true"
     >
     <LinearLayout
         android:layout_marginTop="@dimen/sp20"
@@ -15,7 +17,7 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:layout_marginBottom="@dimen/sp12"
+            android:layout_marginBottom="@dimen/sp10"
             android:padding="@dimen/sp15"
             android:background="@drawable/bg_container"
             android:layout_width="match_parent"
@@ -23,7 +25,61 @@
             android:orientation="vertical">
 
 
+            <RadioGroup
+                android:background="@drawable/bg_filter"
+                android:id="@+id/radio_group_filter"
+                android:layout_marginBottom="@dimen/sp10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <RadioButton
+                    android:tag="filter_biggest_expense"
+                    android:layout_marginBottom="@dimen/sp5"
+                    android:id="@+id/filter_biggest_expense"
+                    android:layout_marginHorizontal="@dimen/sp10"
+                    android:padding="3sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/filter_biggest"/>
+
+                <RadioButton
+                    android:tag="filter_biggest_recipe"
+                    android:layout_marginBottom="@dimen/sp5"
+                    android:id="@+id/filter_biggest_recipe"
+                    android:layout_marginHorizontal="@dimen/sp10"
+                    android:padding="3sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/filter_recipe_biggest"/>
+
+
+                <RadioButton
+                    android:tag="filter_recipe_smallest"
+                    android:layout_marginBottom="@dimen/sp5"
+                    android:id="@+id/filter_smallest_recipe"
+                    android:layout_marginHorizontal="@dimen/sp10"
+                    android:padding="3sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/filter_recipe_smallest"/>
+
+
+                <RadioButton
+                    android:tag="filter_smallest_expense"
+                    android:layout_marginBottom="@dimen/sp3"
+                    android:id="@+id/filter_smallest_expense"
+                    android:layout_marginHorizontal="@dimen/sp10"
+                    android:padding="3sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/filter_smallest_expense"/>
+
+            </RadioGroup>
+
             <LinearLayout
+                android:layout_marginBottom="@dimen/sp12"
+                android:layout_marginHorizontal="@dimen/sp10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -32,52 +88,43 @@
                     android:layout_height="wrap_content"
                     android:text="@string/filter_date"
                     style="@style/label"/>
-                <TextView
-                    android:id="@+id/text_view_filter_date"
+                <EditText
+                    android:id="@+id/edit_text_filter_date"
                     style="@style/field"
+                    android:focusable="false"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:focusableInTouchMode="false"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/sp46"
-                    android:layout_marginBottom="@dimen/sp10"
+                    android:layout_marginBottom="@dimen/sp05"
                     />
             </LinearLayout>
 
-            <include layout="@layout/divised"/>
-
-            <LinearLayout
+            <TextView
+                android:layout_marginBottom="@dimen/sp10"
+                android:layout_marginHorizontal="@dimen/sp10"
+                android:id="@+id/text_view_filter_results"
+                android:textSize="@dimen/sp15"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/filter_date"
-                    style="@style/filter_order"/>
-                <Spinner
-                    android:id="@+id/edit"
-                    style="@style/field"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/sp46"
-                    android:layout_marginBottom="@dimen/sp10"
+                android:textColor="@color/black"
+                android:text=""
+                />
 
-                    />
-            </LinearLayout>
 
-            <Button
-                android:id="@+id/button_save"
-                app:icon="@drawable/ic_filter"
-                android:text="@string/button_filter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
         </LinearLayout>
-
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_marginBottom="@dimen/sp12"
-            android:background="@drawable/bg_container"
-            android:id="@+id/recyclerview_action_container"
+            android:id="@+id/recyclerview_filter_action_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             />
+        <TextView
+            android:layout_marginVertical="@dimen/sp20"
+            android:layout_width="match_parent"
+            android:layout_height="100sp"/>
     </LinearLayout>
 </ScrollView>

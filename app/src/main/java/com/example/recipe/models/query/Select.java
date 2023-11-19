@@ -11,7 +11,7 @@ public class Select {
 
     private AppDatabase database;
 
-    private String[] columns = {};
+    private String[] columns = new String[]{};
 
     private final ArrayList<String> andWhere = new ArrayList<String>();
 
@@ -19,7 +19,7 @@ public class Select {
 
     private String where = null;
 
-    private String[] args = null;
+    private String[] params = new String[]{};
 
     private final ArrayList<String> orderBy = new ArrayList<String>();
 
@@ -92,7 +92,7 @@ public class Select {
 
     public Select params(String... params) {
 
-        this.args = params;
+        this.params = params;
 
         return this;
     }
@@ -101,13 +101,11 @@ public class Select {
 
         String selection = toWhere();
         String orders = toOrderBy();
-        String[] params = args;
 
         return  database.writable
                 .query(from, columns, selection, params, null, null, orders, limit);
 
     }
-
 
     private String toOrderBy() {
 
@@ -124,18 +122,16 @@ public class Select {
 
             String w = "";
 
-            if (null != where && andWhere.isEmpty() && orWhere.isEmpty()) {
+            if (null != where) {
                 w = "(" + where + ")";
-            } else if (null == where && !andWhere.isEmpty() && orWhere.isEmpty()) {
+            } else if (!andWhere.isEmpty() && orWhere.isEmpty()) {
                 w += " AND (" + String.join(") AND (", andWhere) + ")";
             } else {
                 w += " OR (" + String.join(") OR (", andWhere) + ")";
             }
             return w;
         }
-
         return null;
     }
-
 }
 

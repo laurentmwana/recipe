@@ -16,12 +16,12 @@ import com.example.recipe.models.entity.Action;
 
 import java.util.ArrayList;
 
-public class ListingActionAdapter extends  RecyclerView.Adapter<ListingActionAdapter.ViewHolder> {
+public class CustomActionsAdapter extends  RecyclerView.Adapter<CustomActionsAdapter.ViewHolder> {
 
     private ListingActionController controller;
     private ArrayList<Action> actions;
 
-    public ListingActionAdapter(ListingActionController controller, ArrayList<Action> actions) {
+    public CustomActionsAdapter(ListingActionController controller, ArrayList<Action> actions) {
         this.controller = controller;
 
         this.actions = actions;
@@ -44,8 +44,8 @@ public class ListingActionAdapter extends  RecyclerView.Adapter<ListingActionAda
         }
         holder.mTextViewStartTime.setText(Helper.preffix("De", action.getStartTime()));
         holder.mTextViewEndTime.setText(Helper.preffix("à", action.getEndTime()));
-        holder.mTextViewAmountDailyExpense.setText(Helper.suffix(action.getAmountDailyRecipe(), "Fc"));
-        holder.mTextViewAmountDailyRecipe.setText(Helper.suffix(action.getAmountDailyExpense(), "Fc"));
+        holder.mTextViewAmountDailyExpense.setText(Helper.suffix(action.getAmountDailyExpense(), "Fc"));
+        holder.mTextViewAmountDailyRecipe.setText(Helper.suffix(action.getAmountDailyRecipe(), "Fc"));
         holder.mButtonOption.setTag(action);
     }
 

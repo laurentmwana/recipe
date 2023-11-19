@@ -12,7 +12,7 @@
     <string name="item_name_action_stat">Rapport statistique</string>
     <string name="item_name_action_expense">Dépenses et commentaire</string>
     <string name="item_name_action_filter">Filtrer par</string>
-    <string name="filter_date">Date</string>
+    <string name="filter_date">Selectionnez une journée (optional)</string>
     <string name="button_complete">Finaliser</string>
     <string name="endtime">Heure de fin</string>
     <string name="amount_daily_recipe">Recette journalière</string>
@@ -30,4 +30,14 @@
     <string name="show_amount_daily_expense">Le montant des dépenses journalières  : </string>
     <string name="show_created_at">Date de création : </string>
     <string name="show_updated_at">Dernière modification : </string>
+    <string name="filter_biggest">La plus grande dépense</string>
+    <string name="filter_recipe">Le jour le plus long avec le moins de recette</string>
+    <string name="filter_recipe_biggest">La plus grande recette</string>
+    <string name="filter_recipe_plus">Le jour le plus long avec plus de recette</string>
+    <string name="filter_start">De</string>
+    <string name="filter_end">A</string>
+    <string name="filter_with_date_time">Afficher la date et l\'heure</string>
+    <string name="filter_recipe_smallest">La plus petite recette</string>
+    <string name="filter_smallest_expense">La plus petite dépense</string>
+    <string name="filter_reset">Réinitialiser</string>
 </resources>

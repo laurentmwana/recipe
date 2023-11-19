@@ -6,6 +6,7 @@ import com.example.recipe.R;
 import com.example.recipe.helper.Flash;
 import com.example.recipe.helper.Redirect;
 import com.example.recipe.views.ActionActivity;
+import com.example.recipe.views.ExpenseActivity;
 import com.example.recipe.views.FilterActivity;
 import com.example.recipe.views.NewActionActivity;
 import com.example.recipe.views.ShowActionActivity;
@@ -19,6 +20,8 @@ public abstract class Items {
                 Redirect.route(start, NewActionActivity.class);
             } else if (id == R.id.item_action_filter) {
                 Redirect.route(start, FilterActivity.class);
+            } else if (id == R.id.item_action_expense) {
+                Redirect.route(start, ExpenseActivity.class);
             }
         } catch (Exception e) {
             Flash.modal(start, e.getMessage());
@@ -34,6 +37,17 @@ public abstract class Items {
                 context.controller.onDelete();
             } else if (id == R.id.show_back_home) {
                 Redirect.route(context, ActionActivity.class);
+            }
+        } catch (Exception e) {
+            Flash.modal(context, e.getMessage());
+        }
+    }
+
+    public static void filter(FilterActivity context, MenuItem menuItem) {
+        try {
+            int id = menuItem.getItemId();
+            if (id == R.id.filter_reset) {
+                Redirect.route(context, FilterActivity.class);
             }
         } catch (Exception e) {
             Flash.modal(context, e.getMessage());

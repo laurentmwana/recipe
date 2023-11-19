@@ -1,18 +1,21 @@
 package com.example.recipe.views;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 
 import com.example.recipe.R;
 import com.example.recipe.controller.FilterController;
 import com.example.recipe.helper.Flash;
 import com.example.recipe.views.partials.CustomActionBar;
+import com.example.recipe.views.partials.Items;
 
 public class FilterActivity extends AppCompatActivity {
 
-    private AppCompatActivity instance;
+    private FilterActivity instance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +31,13 @@ public class FilterActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_empty, menu);
+        getMenuInflater().inflate(R.menu.menu_action_filter, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        Items.filter(instance, item);
         return true;
     }
 

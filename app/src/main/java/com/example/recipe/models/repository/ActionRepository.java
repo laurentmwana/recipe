@@ -24,7 +24,8 @@ public class ActionRepository {
     private Context context;
 
     private String[] columns = new String[]{
-            "id", "start_time", "end_time", "amount_daily_recipe", "amount_daily_expense", "state", "created_at", "updated_at"};
+            "a.id", "a.start_time", "a.end_time", "a.amount_daily_recipe", "a.amount_daily_expense",
+            "a.state", "a.created_at", "a.updated_at"};
 
     public ActionRepository(Context context) {
 
@@ -51,10 +52,10 @@ public class ActionRepository {
     public ArrayList<Action> findAll() {
         // on recupère les données depuis la base de données
         Cursor cs = (new Select(database))
-                .from(TABLE, null)
+                .from(TABLE, "a")
                 .select(columns)
-                .orderBy("id", "DESC")
-                .orderBy("created_at", "DESC")
+                .orderBy("a.id", "DESC")
+                .orderBy("a.created_at", "DESC")
                 .execute();
 
         ArrayList<Action> ev = new ArrayList<Action>();
@@ -70,9 +71,9 @@ public class ActionRepository {
     public Action find(String id) throws NotFoundException {
         // on recupère les données depuis la base de données qui repondent à la condition id = id
         Cursor cs = (new Select(database))
-                .from(TABLE, null)
+                .from(TABLE, "a")
                 .select(columns)
-                .where("id = ?")
+                .where("a.id = ?")
                 .params(id)
                 .limit(1)
                 .execute();
@@ -132,15 +133,14 @@ public class ActionRepository {
                 .save();
     }
 
-    public ArrayList<Action> like(String v) {
+    public ArrayList<Action> like(String key, String value) {
         // on recupère les données depuis la base de données
         Cursor cs = (new Select(database))
                  .from(TABLE, null)
                 .select(columns)
-                .where("start_time LIKE ?")
-                .orWhere("end_time LIKE ?", "amount_daily_recipe LIKE ?")
+                .where("state = 1")
+                .andWhere(key + " LIKE " + value)
                 .orderBy("created_at", "DESC")
-                .params(v, v, v)
                 .execute();
 
         ArrayList<Action> ev = new ArrayList<Action>();
@@ -166,5 +166,61 @@ public class ActionRepository {
                 .values(vs)
                 .where("id = ?").args(String.valueOf(action.getId()))
                 .save();
+    }
+
+    public ArrayList<Action> findByDate(String date) {
+        // on recupère les données depuis la base de données
+
+        Cursor cs = database.writable.rawQuery("SELECT * FROM actions WHERE created_at LIKE  ?",
+                new String[]{date});
+
+        ArrayList<Action> ev = new ArrayList<Action>();
+
+        // on fait l'hydratation
+        // pour avoir les données sous forme d'objets
+        while (cs.moveToNext()) {
+            ev.add(getHydrate(cs));
+        }
+        return ev;
+    }
+
+    public ArrayList<Action> biggest(String v, boolean b) {
+        String by = b ? "amount_daily_expense" : "amount_daily_recipe";
+        Cursor cs;
+        if (null == v || v.isEmpty()) {
+            cs = database.writable
+                    .rawQuery("SELECT * FROM actions ORDER BY "+ by + " DESC  LIMIT 1", null);
+        } else {
+            cs = database.writable
+                    .rawQuery("SELECT * FROM actions WHERE created_at LIKE ? ORDER BY "+ by + " DESC  LIMIT 1",
+                            new String[]{by});
+        }
+
+        ArrayList<Action> ev = new ArrayList<Action>();
+
+        while (cs.moveToNext()) {
+            ev.add(getHydrate(cs));
+        }
+        return ev;
+    }
+
+    public ArrayList<Action> smallest(String v, boolean b) {
+        String by = b ? "amount_daily_expense" : "amount_daily_recipe";
+        Cursor cs;
+        if (null == v || v.isEmpty()) {
+            cs = database.writable
+                    .rawQuery("SELECT * FROM actions ORDER BY "+ by + " ASC  LIMIT 1", null);
+        } else {
+            cs = database.writable
+                    .rawQuery("SELECT * FROM actions WHERE created_at LIKE ? ORDER BY "+ by + " ASC  LIMIT 1",
+                            new String[]{by});
+        }
+
+        ArrayList<Action> ev = new ArrayList<Action>();
+
+        while (cs.moveToNext()) {
+            ev.add(getHydrate(cs));
+        }
+        return ev;
     }
 }

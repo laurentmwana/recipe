@@ -20,10 +20,10 @@
         android:id="@+id/item_action_rapport_stat"
         app:showAsAction="ifRoom"
         />
+
     <item
         android:id="@+id/item_action_expense"
         android:title="@string/item_name_action_expense"
         app:showAsAction="never"
         />
-
 </menu>
