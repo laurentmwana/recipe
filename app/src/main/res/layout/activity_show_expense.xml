@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".views.ShowExpenseActivity"
+    android:padding="@dimen/sp20"
     android:background="@color/color_light"
-    android:layout_marginBottom="@dimen/sp12"
-
     >
     <LinearLayout
         android:padding="@dimen/sp20"
         android:background="@drawable/bg_container"
+        android:layout_marginTop="@dimen/sp20"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
-            android:layout_marginBottom="@dimen/sp12"
+            android:layout_marginBottom="@dimen/sp10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -36,7 +39,7 @@
                 />
         </LinearLayout>
         <LinearLayout
-            android:layout_marginBottom="@dimen/sp12"
+            android:layout_marginBottom="@dimen/sp18"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -82,7 +85,7 @@
                 />
         </LinearLayout>
         <LinearLayout
-            android:layout_marginBottom="@dimen/sp12"
+            android:layout_marginBottom="@dimen/sp18"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -105,15 +108,66 @@
                 android:layout_height="wrap_content"
                 />
         </LinearLayout>
+        <LinearLayout
+            android:layout_marginBottom="@dimen/sp10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp15"
+                android:text="@string/show_created_at"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+            <TextView
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp15"
+                android:layout_marginStart="@dimen/sp10"
+                android:id="@+id/text_view_created_at"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginBottom="@dimen/sp10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp15"
+                android:text="@string/show_updated_at"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+            <TextView
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp15"
+                android:layout_marginStart="@dimen/sp10"
+                android:id="@+id/text_view_updated_at"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+
+
+        <TextView
+            android:textColor="@color/black"
+            android:textStyle="bold|italic"
+            android:textSize="@dimen/sp15"
+            android:layout_marginBottom="@dimen/sp20"
+            android:id="@+id/text_view_count_comment"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            />
 
         <Button
-            android:layout_marginTop="@dimen/sp5"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:id="@+id/button_eye"
-            app:icon="@drawable/ic_eye"
+            android:id="@+id/button_add_comment"
+            android:text="@string/comment_add"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_eye"/>
-
+            android:layout_height="wrap_content"/>
     </LinearLayout>
-</LinearLayout>
+</ScrollView>

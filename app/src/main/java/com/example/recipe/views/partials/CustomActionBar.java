@@ -25,7 +25,6 @@ public abstract class CustomActionBar {
      */
     public static void backed(String title, AppCompatActivity context) {
         ActionBar actionBar = context.getSupportActionBar();
-        actionBar.setHomeButtonEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setTitle(title);
     }

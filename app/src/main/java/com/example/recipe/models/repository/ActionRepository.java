@@ -102,10 +102,10 @@ public class ActionRepository {
     public Action findState() {
         // on recupère les données depuis la base de données qui repondent à la condition id = id
         Cursor cs = (new Select(database))
-                .from(TABLE, null)
+                .from(TABLE, "a")
                 .select(columns)
-                .where("state = 0")
-                .orderBy("created_at", "DESC")
+                .where("a.state = 0")
+                .orderBy("a.created_at", "DESC")
                 .limit(1).execute();
         if (cs.getCount() <= 0) {
             return null;
@@ -222,5 +222,26 @@ public class ActionRepository {
             ev.add(getHydrate(cs));
         }
         return ev;
+    }
+
+    public ArrayList<Action> expenses() {
+        Cursor cs = database.writable
+                .rawQuery("SELECT * FROM actions ORDER BY created_at DESC ", null);
+
+        ArrayList<Action> ev = new ArrayList<Action>();
+
+        while (cs.moveToNext()) {
+            ev.add(getHydrate(cs));
+        }
+        return ev;
+    }
+
+    public Float countExpense() {
+        Cursor cs = database.writable
+                .rawQuery("SELECT SUM(amount_daily_expense) AS ade FROM actions", null);
+
+        cs.moveToFirst();
+
+        return cs.getFloat(0);
     }
 }

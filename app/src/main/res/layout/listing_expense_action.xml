@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingVertical="@dimen/sp18"
+    android:paddingHorizontal="@dimen/sp10"
+    android:layout_marginBottom="@dimen/sp20"
+    android:background="@drawable/bg_action_item_listing">
+
+    <LinearLayout
+        android:layout_marginBottom="@dimen/sp18"
+        android:padding="@dimen/sp10"
+        android:background="@drawable/bg_container"
+        android:textStyle="italic|bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/sp20"
+        android:orientation="vertical">
+        <TextView
+            android:textAlignment="center"
+            android:layout_marginBottom="5sp"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/amount_daily_expense"/>
+        <TextView
+            android:id="@+id/text_view_amount_daily_expense"
+            android:textStyle="bold|normal"
+            android:textAlignment="center"
+            android:layout_marginBottom="5sp"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:id="@+id/button_eye"
+            app:icon="@drawable/ic_eye"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_eye"/>
+        <Button
+            android:layout_marginStart="@dimen/sp12"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:id="@+id/button_comment"
+            app:icon="@drawable/ic_comment"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_add_comment"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>

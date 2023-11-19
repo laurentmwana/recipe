@@ -40,4 +40,10 @@
     <string name="filter_recipe_smallest">La plus petite recette</string>
     <string name="filter_smallest_expense">La plus petite dépense</string>
     <string name="filter_reset">Réinitialiser</string>
+    <string name="comment_show">Voir les commentaires</string>
+    <string name="comment_add">Ajouter un commentaire</string>
+    <string name="button_comment">Commentaires</string>
+    <string name="button_add_comment">Commentée</string>
+    <string name="comment">Commentaire</string>
+    <string name="button_add">Ajouter</string>
 </resources>

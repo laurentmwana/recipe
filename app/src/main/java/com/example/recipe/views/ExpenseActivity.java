@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.view.Menu;
 
 import com.example.recipe.R;
+import com.example.recipe.adapters.CustomActionsAdapter;
 import com.example.recipe.controller.ExpenseController;
 import com.example.recipe.helper.Flash;
 import com.example.recipe.helper.Redirect;
+import com.example.recipe.views.partials.CustomActionBar;
 
 public class ExpenseActivity extends AppCompatActivity {
 
@@ -46,8 +48,7 @@ public class ExpenseActivity extends AppCompatActivity {
     }
 
     private void init() {
-
+        CustomActionBar.backed("Dépenses", instance);
         (new ExpenseController(instance)).handle();
     }
-
 }

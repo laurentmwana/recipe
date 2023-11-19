@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/comment_add"
+        android:title="@string/comment_add"
+        />
+    <item
+        android:id="@+id/comment_show"
+        android:title="@string/comment_show"
+        />
+</menu>
