@@ -13,11 +13,16 @@
         android:theme="@style/Theme.Recipe"
         tools:targetApi="31">
         <activity
-            android:name=".views.NewCommentActivity"
+            android:name=".views.AllCommentsActivity"
             android:exported="false" />
         <activity
+            android:name=".views.NewCommentActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".views.ShowExpenseActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".views.ExpenseActivity"
             android:exported="false"

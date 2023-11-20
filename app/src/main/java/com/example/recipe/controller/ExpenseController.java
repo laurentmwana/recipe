@@ -14,6 +14,7 @@ import com.example.recipe.helper.Redirect;
 import com.example.recipe.models.entity.Action;
 import com.example.recipe.models.repository.ActionRepository;
 import com.example.recipe.views.ExpenseActivity;
+import com.example.recipe.views.NewCommentActivity;
 import com.example.recipe.views.ShowExpenseActivity;
 
 import java.lang.reflect.Array;
@@ -66,6 +67,6 @@ public class ExpenseController {
 
     public void onComment(View view) {
         Action action = (Action) view.getTag();
-        Redirect.route(context, ShowExpenseActivity.class, "id", String.valueOf(action.getId()));
+        Redirect.route(context, NewCommentActivity.class, "id", String.valueOf(action.getId()));
     }
 }

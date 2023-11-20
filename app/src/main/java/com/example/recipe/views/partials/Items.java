@@ -6,7 +6,7 @@ import com.example.recipe.R;
 import com.example.recipe.helper.Flash;
 import com.example.recipe.helper.Redirect;
 import com.example.recipe.views.ActionActivity;
-import com.example.recipe.views.CommentsActivity;
+import com.example.recipe.views.AllCommentsActivity;
 import com.example.recipe.views.ExpenseActivity;
 import com.example.recipe.views.FilterActivity;
 import com.example.recipe.views.NewActionActivity;
@@ -64,7 +64,7 @@ public abstract class Items {
             if (id == R.id.comment_add) {
                 Redirect.route(context, NewCommentActivity.class, "id", identified);
             } else if (id == R.id.comment_show) {
-                Redirect.route(context, CommentsActivity.class, "id", identified);
+                Redirect.route(context, AllCommentsActivity.class, "id", identified);
             }
         } catch (Exception e) {
             Flash.modal(context, e.getMessage());

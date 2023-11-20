@@ -7,11 +7,15 @@ import android.widget.TextView;
 
 import com.example.recipe.R;
 import com.example.recipe.exception.NotFoundException;
+import com.example.recipe.helper.Flash;
+import com.example.recipe.helper.Redirect;
 import com.example.recipe.helper.Shared;
 import com.example.recipe.models.entity.Action;
 import com.example.recipe.models.repository.ActionRepository;
+import com.example.recipe.models.repository.CommentRepository;
 import com.example.recipe.validator.Validator;
 import com.example.recipe.views.NewCommentActivity;
+import com.example.recipe.views.ShowExpenseActivity;
 
 public class NewCommentController {
 
@@ -19,19 +23,23 @@ public class NewCommentController {
     
     private final NewCommentActivity context;
 
-    private final ActionRepository repository;
-    
+    private final ActionRepository actionRepository;
+
     private EditText mEditTextComment;
     
     private Button mButtonSave;
+
+    private CommentRepository repository;
 
     public NewCommentController(NewCommentActivity context) throws NotFoundException {
 
         this.context = context;
 
-        this.repository = new ActionRepository(context);
+        this.actionRepository = new ActionRepository(context);
         
         this.action = getAction();
+
+        this.repository = new CommentRepository(context);
     }
 
     public void handle()  {
@@ -51,11 +59,14 @@ public class NewCommentController {
                 .between(mEditTextComment, 5, 500).required(mEditTextComment);
 
         if (validator.isValid()) {
-
+            boolean created = repository.add(mEditTextComment.getText().toString(), action.getId());
+            Flash.ok(context, "Commentaire ajouté", (dialogInterface, i) -> {
+                Redirect.route(context, ShowExpenseActivity.class, "id", String.valueOf(action.getId()));
+            });
         }
     }
 
     public Action getAction() throws NotFoundException {
-        return  repository.find(Shared.getId(context));
+        return  actionRepository.find(Shared.getId(context));
     }
 }

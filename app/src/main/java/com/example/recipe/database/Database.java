@@ -31,14 +31,25 @@ public class Database extends SQLiteOpenHelper {
                 "updated_at DATETIME" +
                 ");";
 
+        String createTableComments = "CREATE TABLE IF NOT EXISTS comments(" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "comment TEXT NOT NULL," +
+                "action_id INTEGER NOT NULL," +
+                "created_at DATETIME NOT NULL," +
+                "FOREIGN KEY (`action_id`) REFERENCES `actions` (`id`) ON UPDATE CASCADE ON DELETE CASCADE" +
+                ");";
+
         sqLiteDatabase.execSQL(createTableEvent);
+        sqLiteDatabase.execSQL(createTableComments);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
         String dropTablActions = "DROP TABLE IF EXISTS actions";
+        String dropTableComments = "DROP TABLE IF EXISTS comments";
 
         sqLiteDatabase.execSQL(dropTablActions);
+        sqLiteDatabase.execSQL(dropTableComments);
     }
 }

@@ -11,6 +11,7 @@ import com.example.recipe.helper.Redirect;
 import com.example.recipe.helper.Shared;
 import com.example.recipe.models.entity.Action;
 import com.example.recipe.models.repository.ActionRepository;
+import com.example.recipe.models.repository.CommentRepository;
 import com.example.recipe.views.NewCommentActivity;
 import com.example.recipe.views.ShowExpenseActivity;
 
@@ -28,6 +29,7 @@ public class ShowExpenseActionController {
     private TextView mTextViewCreatedAt, mTextViewUpdatedAt;
 
     private Button mButtonNewComment;
+    private CommentRepository commentRepository;
 
 
     public ShowExpenseActionController(ShowExpenseActivity context) throws NotFoundException {
@@ -35,6 +37,7 @@ public class ShowExpenseActionController {
         this.context = context;
 
         this.repository = new ActionRepository(context);
+        this.commentRepository = new CommentRepository(context);
 
         this.action = getAction();
     }
@@ -59,7 +62,9 @@ public class ShowExpenseActionController {
     }
 
     private void show() {
-        mTextViewCountComment.setText("Il y a 40 commentaires") ;
+        int comments = commentRepository.count(action.getId());
+        String c = "Il y a " + comments + " commentaire(s)";
+        mTextViewCountComment.setText(c) ;
         mTextViewStartTime.setText(action.getStartTime());
         mTextViewEndTime.setText(action.getEndTime());
         mTextViewAmountDailyRecipe.setText(Helper.suffix(action.getAmountDailyRecipe(), "Fc"));

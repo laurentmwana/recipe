@@ -8,7 +8,7 @@ public class Comment {
 
     private String created_at;
 
-    private String updated_at;
+    private int action_id;
 
     public int getId() {
         return id;
@@ -41,12 +41,12 @@ public class Comment {
 
     }
 
-    public String getUpdatedAt() {
-        return updated_at;
+    public int getActionId() {
+        return action_id;
     }
 
-    public Comment setUpdatedAt(String updated_at) {
-        this.updated_at = updated_at;
+    public Comment setActionId(int action_id) {
+        this.action_id = action_id;
 
         return this;
     }
