@@ -10,6 +10,7 @@ import com.example.recipe.adapters.CustomCommentAdapter;
 import com.example.recipe.exception.NotFoundException;
 import com.example.recipe.helper.Flash;
 import com.example.recipe.helper.Redirect;
+import com.example.recipe.helper.Session;
 import com.example.recipe.helper.Shared;
 import com.example.recipe.models.entity.Action;
 import com.example.recipe.models.entity.Comment;
@@ -34,6 +35,8 @@ public class AllCommentController  {
     public AllCommentController(AllCommentsActivity context) {
 
         this.context = context;
+
+        Session.check(context);
 
         this.actionRepository = new ActionRepository(context);
         this.repository = new CommentRepository(context);

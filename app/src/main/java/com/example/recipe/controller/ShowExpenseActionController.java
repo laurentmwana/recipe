@@ -8,6 +8,7 @@ import com.example.recipe.R;
 import com.example.recipe.exception.NotFoundException;
 import com.example.recipe.helper.Helper;
 import com.example.recipe.helper.Redirect;
+import com.example.recipe.helper.Session;
 import com.example.recipe.helper.Shared;
 import com.example.recipe.models.entity.Action;
 import com.example.recipe.models.repository.ActionRepository;
@@ -35,6 +36,8 @@ public class ShowExpenseActionController {
     public ShowExpenseActionController(ShowExpenseActivity context) throws NotFoundException {
 
         this.context = context;
+
+        Session.check(context);
 
         this.repository = new ActionRepository(context);
         this.commentRepository = new CommentRepository(context);

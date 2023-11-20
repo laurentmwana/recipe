@@ -16,6 +16,7 @@ import com.example.recipe.adapters.CustomFilterActionAdapter;
 import com.example.recipe.database.AppDatabase;
 import com.example.recipe.helper.Flash;
 import com.example.recipe.helper.Picker;
+import com.example.recipe.helper.Session;
 import com.example.recipe.models.entity.Action;
 import com.example.recipe.models.repository.ActionRepository;
 import com.example.recipe.views.FilterActivity;
@@ -40,6 +41,9 @@ public class FilterController {
     public FilterController(FilterActivity context) {
 
         this.context = context;
+
+        Session.check(context);
+
 
         this.repository = new ActionRepository(context);
     }

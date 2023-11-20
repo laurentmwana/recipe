@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.RapportActivity"
+    android:padding="@dimen/sp20"
+    android:background="@color/color_light"
+    android:scrollbars="none"
+    android:fillViewport="true"
+    >
+    <LinearLayout
+        android:layout_marginTop="@dimen/sp20"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioGroup
+            android:background="@drawable/bg_filter"
+            android:id="@+id/radio_group_filter"
+            android:layout_marginBottom="@dimen/sp10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <RadioButton
+                android:tag="filter_biggest_recipe"
+                android:layout_marginBottom="@dimen/sp5"
+                android:id="@+id/filter_biggest_recipe"
+                android:layout_marginHorizontal="@dimen/sp10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/sp10"
+                android:text="@string/filter_recipe_biggest"/>
+
+            <RadioButton
+                android:paddingStart="@dimen/sp10"
+                android:tag="filter_recipe_smallest"
+                android:id="@+id/filter_smallest_recipe"
+                android:layout_marginHorizontal="@dimen/sp10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/filter_recipe_smallest"/>
+
+        </RadioGroup>
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_marginTop="@dimen/sp20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <com.anychart.AnyChartView
+                android:id="@+id/any_chart_view_rapport"
+                android:layout_width="match_parent"
+                android:layout_height="400sp"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

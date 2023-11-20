@@ -30,6 +30,5 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             />
 
-
     </LinearLayout>
 </ScrollView>

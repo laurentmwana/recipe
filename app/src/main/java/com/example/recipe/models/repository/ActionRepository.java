@@ -133,25 +133,6 @@ public class ActionRepository {
                 .save();
     }
 
-    public ArrayList<Action> like(String key, String value) {
-        // on recupère les données depuis la base de données
-        Cursor cs = (new Select(database))
-                 .from(TABLE, null)
-                .select(columns)
-                .where("state = 1")
-                .andWhere(key + " LIKE " + value)
-                .orderBy("created_at", "DESC")
-                .execute();
-
-        ArrayList<Action> ev = new ArrayList<Action>();
-
-        // on fait l'hydratation
-        // pour avoir les données sous forme d'objets
-        while (cs.moveToNext()) {
-            ev.add(getHydrate(cs));
-        }
-        return ev;
-    }
 
     public boolean update(Action action) {
         ContentValues vs = new ContentValues();
@@ -243,5 +224,31 @@ public class ActionRepository {
         cs.moveToFirst();
 
         return cs.getFloat(0);
+    }
+
+    public float countRecipe() {
+        Cursor cs = database.writable
+                .rawQuery("SELECT SUM(amount_daily_recipe) AS ade FROM actions", null);
+
+        cs.moveToFirst();
+
+        return cs.getFloat(0);
+    }
+
+    public int times() {
+        String sql = "SELECT " +
+                "SUM(STRFTIME('%s', end_time) - STRFTIME('%s', start_time)) AS ade FROM" +
+                " actions GROUP BY ade";
+        Cursor cs = database.writable.rawQuery(sql, null);
+
+        cs.moveToFirst();
+
+        return cs.getInt(0);
+    }
+
+    public void deleteAll() {
+        (new Delete(database))
+                .from(TABLE, null)
+                .save();
     }
 }

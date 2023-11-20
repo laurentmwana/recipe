@@ -10,5 +10,6 @@
     <dimen name="sp16">16sp</dimen>
     <dimen name="sp05">5sp</dimen>
     <dimen name="sp3">3sp</dimen>
+    <dimen name="sp30">30sp</dimen>
 
 </resources>

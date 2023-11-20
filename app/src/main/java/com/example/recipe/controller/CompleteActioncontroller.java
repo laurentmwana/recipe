@@ -10,6 +10,7 @@ import com.example.recipe.exception.NotFoundException;
 import com.example.recipe.helper.Flash;
 import com.example.recipe.helper.Picker;
 import com.example.recipe.helper.Redirect;
+import com.example.recipe.helper.Session;
 import com.example.recipe.helper.Shared;
 import com.example.recipe.models.entity.Action;
 import com.example.recipe.models.repository.ActionRepository;
@@ -36,6 +37,9 @@ public class CompleteActioncontroller {
 
         this.context = context;
 
+        Session.check(context);
+
+
         this.repository = new ActionRepository(context);
 
         this.action = getAction();
@@ -48,7 +52,13 @@ public class CompleteActioncontroller {
     public void handle() throws NotFoundException {
 
         // initialisation
-        init();
+        mTextViewStartTime = (TextView) context.findViewById(R.id.text_view_start_time);
+        mTextViewEndTime = (TextView) context.findViewById(R.id.text_view_end_time);
+
+        mEditTextAmountDailyExpense = (EditText) context.findViewById(R.id.edit_text_amount_daily_expense);
+        mEditTextAmountDailyRecipe = (EditText) context.findViewById(R.id.edit_text_amount_daily_recipe);
+
+        mButtonSave = (Button) context.findViewById(R.id.button_save);
 
         addListeners();
     }
@@ -63,6 +73,8 @@ public class CompleteActioncontroller {
 
     private void onSave(View view) {
         Validator validator = new Validator();
+
+        validator.required(mEditTextAmountDailyRecipe, mEditTextAmountDailyExpense);
 
         validator.isTime(mTextViewStartTime).isTime(mTextViewEndTime);
 
@@ -89,15 +101,4 @@ public class CompleteActioncontroller {
         return action;
     }
 
-
-
-    private void init() {
-        mTextViewStartTime = (TextView) context.findViewById(R.id.text_view_start_time);
-        mTextViewEndTime = (TextView) context.findViewById(R.id.text_view_end_time);
-
-        mEditTextAmountDailyExpense = (EditText) context.findViewById(R.id.edit_text_amount_daily_expense);
-        mEditTextAmountDailyRecipe = (EditText) context.findViewById(R.id.edit_text_amount_daily_recipe);
-
-        mButtonSave = (Button) context.findViewById(R.id.button_save);
-    }
 }

@@ -46,4 +46,25 @@
     <string name="button_add_comment">Commentée</string>
     <string name="comment">Commentaire</string>
     <string name="button_add">Ajouter</string>
+    <string name="login_title">Se connecter</string>
+    <string name="button_login">Se connecter</string>
+    <string name="username">Nom d\'utilisateur</string>
+    <string name="password">Mot de passe</string>
+    <string name="button_register">Créer un nouveau compte</string>
+    <string name="button_forgot">Mot de passe oublié</string>
+    <string name="button_password">Changer le mot de passe</string>
+    <string name="password_new">Nouveau mot de passe</string>
+    <string name="password_title">Nouveau mot de passe</string>
+    <string name="forogot_title">Mot de passe oublié</string>
+    <string name="pin">Code pin</string>
+    <string name="fullname">Nom complet</string>
+    <string name="register_title">Création du compte</string>
+    <string name="item_name_action_profile">Mon compte</string>
+    <string name="profile_info_title">Informations de profil</string>
+    <string name="profile_info_description">Mettez à jour les informations de profil et le code pin de votre compte.</string>
+    <string name="profile_password_title">Mettre à jour le mot de passe</string>
+    <string name="profile_password_description">Assurez-vous que votre compte utilise un mot de passe long et aléatoire pour rester en sécurité.</string>
+    <string name="profile_delete_title">Suppression du compte</string>
+    <string name="profile_delete_description">Une fois votre compte supprimé, toutes ses ressources et données seront définitivement supprimées. Avant de supprimer votre compte, veuillez télécharger les données ou informations que vous souhaitez conserver</string>
+    <string name="item_name_action_logout">Se déconnecter</string>
 </resources>

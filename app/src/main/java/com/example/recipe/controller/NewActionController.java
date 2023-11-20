@@ -8,6 +8,7 @@ import com.example.recipe.exception.NotFoundException;
 import com.example.recipe.helper.Flash;
 import com.example.recipe.helper.Picker;
 import com.example.recipe.helper.Redirect;
+import com.example.recipe.helper.Session;
 import com.example.recipe.models.entity.Action;
 import com.example.recipe.models.repository.ActionRepository;
 import com.example.recipe.validator.Validator;
@@ -28,6 +29,9 @@ public class NewActionController {
     public NewActionController(NewActionActivity context) {
 
         this.context = context;
+
+        Session.check(context);
+
 
         this.repository = new ActionRepository(context);
     }

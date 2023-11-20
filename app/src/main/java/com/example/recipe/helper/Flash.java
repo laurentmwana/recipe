@@ -31,6 +31,7 @@ public abstract class Flash {
         (new AlertDialog.Builder(c))
                 .setTitle("Message")
                 .setMessage(message)
+                .setCancelable(false)
                 .setNeutralButton("Ok", onOk).show();
 
     }
@@ -43,6 +44,7 @@ public abstract class Flash {
         (new AlertDialog.Builder(c))
                 .setTitle("Message")
                 .setMessage(message)
+                .setCancelable(false)
                 .setPositiveButton("Oui", positive)
                 .setNegativeButton("Non", negative)
                 .show();

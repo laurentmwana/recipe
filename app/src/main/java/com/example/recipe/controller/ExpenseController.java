@@ -11,6 +11,7 @@ import com.example.recipe.adapters.CustomExpenseActionAdapter;
 import com.example.recipe.adapters.CustomFilterActionAdapter;
 import com.example.recipe.helper.Flash;
 import com.example.recipe.helper.Redirect;
+import com.example.recipe.helper.Session;
 import com.example.recipe.models.entity.Action;
 import com.example.recipe.models.repository.ActionRepository;
 import com.example.recipe.views.ExpenseActivity;
@@ -37,6 +38,9 @@ public class ExpenseController {
     public ExpenseController(ExpenseActivity context) {
 
         this.context = context;
+
+        Session.check(context);
+
 
         this.repository = new ActionRepository(context);
     }

@@ -9,6 +9,7 @@ import com.example.recipe.R;
 import com.example.recipe.exception.NotFoundException;
 import com.example.recipe.helper.Flash;
 import com.example.recipe.helper.Redirect;
+import com.example.recipe.helper.Session;
 import com.example.recipe.helper.Shared;
 import com.example.recipe.models.entity.Action;
 import com.example.recipe.models.repository.ActionRepository;
@@ -45,7 +46,9 @@ public class NewCommentController {
     public void handle()  {
         mEditTextComment = (EditText) context.findViewById(R.id.edit_text_new_comment);
         mButtonSave = (Button) context.findViewById(R.id.button_save);
-        
+
+        Session.check(context);
+
         addListeners();
     }
 
