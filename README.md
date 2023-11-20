@@ -10,8 +10,7 @@ Exemple :
 - Un taximan qui veut suivre tous les jours et mois ses recettes et dépenses. 
 - Une maman vendant du pain qui veut suivre le montant gagné par jour et la durée de ses journées.
 
-
-  Fonctionnalités attendues : 
+## Fonctionnalités attendues : 
 1. Voir consignes générales (connexion / login / déconnexion, etc.). 
 2. Une page permettant de saisir : 
   - l’heure de début de son activité ;
