@@ -8,7 +8,7 @@ import android.widget.EditText;
 import com.example.recipe.R;
 import com.example.recipe.helper.Flash;
 import com.example.recipe.helper.Redirect;
-import com.example.recipe.helper.Session;
+import com.example.recipe.helper.Authentificator;
 import com.example.recipe.validator.Validator;
 import com.example.recipe.views.ActionActivity;
 import com.example.recipe.views.auth.RegisterActivity;
@@ -28,7 +28,7 @@ public class AuthRegisterController {
 
         this.context = context;
 
-        Session.isRegister(context);
+        Authentificator.isRegister(context);
     }
 
     public void handle() {
@@ -52,9 +52,20 @@ public class AuthRegisterController {
 
         Validator validator = new Validator();
 
+        validator.required(mEditTextFullName, mEditTextUsername);
+        validator.required(mEditTextPassword, mEditTextPin);
+
+
+        validator.regex(mEditTextPin, "(^[0-9]+$)")
+                .regex(mEditTextUsername, "(^[0-9a-zA-Z_]+$)");
+
+        validator.between(mEditTextPassword, 5, 10);
+        validator.between(mEditTextUsername, 5, 20);
+        validator.between(mEditTextFullName, 3, 100);
+
         if (validator.isValid()) {
 
-            Session.set(context,
+            Authentificator.set(context,
                     mEditTextFullName.getText().toString(),
                     mEditTextUsername.getText().toString(),
                     mEditTextPassword.getText().toString(),

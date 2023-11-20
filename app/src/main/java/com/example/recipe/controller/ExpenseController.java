@@ -1,24 +1,20 @@
 package com.example.recipe.controller;
 
 import android.view.View;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.recipe.R;
 import com.example.recipe.adapters.CustomExpenseActionAdapter;
-import com.example.recipe.adapters.CustomFilterActionAdapter;
-import com.example.recipe.helper.Flash;
 import com.example.recipe.helper.Redirect;
-import com.example.recipe.helper.Session;
+import com.example.recipe.helper.Authentificator;
 import com.example.recipe.models.entity.Action;
 import com.example.recipe.models.repository.ActionRepository;
 import com.example.recipe.views.ExpenseActivity;
 import com.example.recipe.views.NewCommentActivity;
 import com.example.recipe.views.ShowExpenseActivity;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class ExpenseController {
@@ -39,7 +35,7 @@ public class ExpenseController {
 
         this.context = context;
 
-        Session.check(context);
+        Authentificator.check(context);
 
 
         this.repository = new ActionRepository(context);

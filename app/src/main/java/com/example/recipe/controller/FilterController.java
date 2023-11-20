@@ -1,6 +1,5 @@
 package com.example.recipe.controller;
 
-import android.database.Cursor;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -13,10 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.recipe.R;
 import com.example.recipe.adapters.CustomFilterActionAdapter;
-import com.example.recipe.database.AppDatabase;
 import com.example.recipe.helper.Flash;
 import com.example.recipe.helper.Picker;
-import com.example.recipe.helper.Session;
+import com.example.recipe.helper.Authentificator;
 import com.example.recipe.models.entity.Action;
 import com.example.recipe.models.repository.ActionRepository;
 import com.example.recipe.views.FilterActivity;
@@ -42,7 +40,7 @@ public class FilterController {
 
         this.context = context;
 
-        Session.check(context);
+        Authentificator.check(context);
 
 
         this.repository = new ActionRepository(context);

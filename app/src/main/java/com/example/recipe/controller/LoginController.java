@@ -8,7 +8,7 @@ import android.widget.EditText;
 import com.example.recipe.R;
 import com.example.recipe.helper.Flash;
 import com.example.recipe.helper.Redirect;
-import com.example.recipe.helper.Session;
+import com.example.recipe.helper.Authentificator;
 import com.example.recipe.validator.Validator;
 import com.example.recipe.views.ActionActivity;
 import com.example.recipe.views.auth.LoginActivity;
@@ -25,12 +25,12 @@ public class LoginController {
 
         this.context = context;
 
-        Session.isconnected(context);
+        Authentificator.isconnected(context);
 
     }
 
     public static void logout(ActionActivity c) {
-        Session.logout(c);
+        Authentificator.logout(c);
     }
 
     public void handle() {
@@ -58,7 +58,7 @@ public class LoginController {
             String u = mEditTextUsername.getText().toString();
             String pass = mEditTextPassword.getText().toString();
 
-            boolean okPassport = Session.checkIdentified(context, u, pass);
+            boolean okPassport = Authentificator.checkIdentified(context, u, pass);
 
             if (okPassport) {
                 Flash.ok(context, "Vous êtes connecté " + u, (dialogInterface, i) -> {

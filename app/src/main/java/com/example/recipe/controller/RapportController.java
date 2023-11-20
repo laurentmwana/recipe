@@ -1,19 +1,12 @@
 package com.example.recipe.controller;
 
-import android.widget.Button;
-import android.widget.EditText;
-
 import com.anychart.AnyChart;
 import com.anychart.AnyChartView;
 import com.anychart.chart.common.dataentry.DataEntry;
 import com.anychart.chart.common.dataentry.ValueDataEntry;
-import com.anychart.chart.common.listener.ListenersInterface;
 import com.anychart.charts.Pie;
-import com.anychart.enums.Align;
-import com.anychart.enums.LegendLayout;
 import com.example.recipe.R;
-import com.example.recipe.helper.Flash;
-import com.example.recipe.helper.Session;
+import com.example.recipe.helper.Authentificator;
 import com.example.recipe.models.repository.ActionRepository;
 import com.example.recipe.views.RapportActivity;
 
@@ -32,7 +25,7 @@ public class RapportController {
     public RapportController(RapportActivity context) {
         this.context = context;
 
-        Session.check(context);
+        Authentificator.check(context);
 
         this.repository = new ActionRepository(context);
     }

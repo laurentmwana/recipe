@@ -9,7 +9,7 @@ import com.example.recipe.R;
 import com.example.recipe.adapters.CustomActionsAdapter;
 import com.example.recipe.helper.Flash;
 import com.example.recipe.helper.Redirect;
-import com.example.recipe.helper.Session;
+import com.example.recipe.helper.Authentificator;
 import com.example.recipe.models.entity.Action;
 import com.example.recipe.models.repository.ActionRepository;
 import com.example.recipe.views.ActionActivity;
@@ -33,7 +33,7 @@ public class ListingActionController {
 
         this.context = context;
 
-        Session.check(context);
+        Authentificator.check(context);
 
         this.repository = new ActionRepository(context);
 

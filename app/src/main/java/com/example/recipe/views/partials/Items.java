@@ -5,10 +5,9 @@ import android.view.MenuItem;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.recipe.R;
-import com.example.recipe.controller.LoginController;
 import com.example.recipe.helper.Flash;
 import com.example.recipe.helper.Redirect;
-import com.example.recipe.helper.Session;
+import com.example.recipe.helper.Authentificator;
 import com.example.recipe.views.ActionActivity;
 import com.example.recipe.views.AllCommentsActivity;
 import com.example.recipe.views.ExpenseActivity;
@@ -39,7 +38,7 @@ public abstract class Items {
             } else if (id == R.id.item_profile) {
                 Redirect.route(start, ProfileActivity.class);
             } else if (id == R.id.item_logout) {
-                Session.logout(start);
+                Authentificator.logout(start);
                 Redirect.route(start, LoginActivity.class);
             }
         } catch (Exception e) {

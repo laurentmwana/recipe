@@ -10,13 +10,11 @@ import android.widget.EditText;
 import com.example.recipe.R;
 import com.example.recipe.helper.Flash;
 import com.example.recipe.helper.Redirect;
-import com.example.recipe.helper.Session;
+import com.example.recipe.helper.Authentificator;
 import com.example.recipe.models.repository.ActionRepository;
 import com.example.recipe.validator.Validator;
-import com.example.recipe.views.ActionActivity;
 import com.example.recipe.views.auth.LoginActivity;
 import com.example.recipe.views.auth.ProfileActivity;
-import com.example.recipe.views.auth.RegisterActivity;
 
 public class ProfileController {
 
@@ -35,7 +33,7 @@ public class ProfileController {
 
         this.context = context;
 
-        Session.check(context);
+        Authentificator.check(context);
 
         this.repository = new ActionRepository(context);
     }
@@ -59,7 +57,7 @@ public class ProfileController {
     }
 
     private void hydrate() {
-        SharedPreferences session = Session.get(context);
+        SharedPreferences session = Authentificator.get(context);
         mEditTextPin.setText(session.getString("pin", null));
         mEditTextFullName.setText(session.getString("full_name", null));
         mEditTextUsername.setText(session.getString("username", null));
@@ -75,7 +73,7 @@ public class ProfileController {
     private void onDelete(View view) {
 
         DialogInterface.OnClickListener onYes = (dialogInterface, i) -> {
-            Session.initialize(context);
+            Authentificator.initialize(context);
             repository.deleteAll();
             Redirect.route(context, LoginActivity.class);
         };
@@ -98,7 +96,7 @@ public class ProfileController {
         validator.between(mEditTextUsername, 5, 10);
 
         if (validator.isValid()) {
-            Session.setInfo(context,
+            Authentificator.setInfo(context,
                     mEditTextFullName.getText().toString(),
                     mEditTextUsername.getText().toString(),
                     mEditTextPin.getText().toString()
@@ -117,7 +115,7 @@ public class ProfileController {
         validator.between(mEditTextUsername, 5, 100);
 
         if (validator.isValid()) {
-            Session.setPassword(context, mEditTextPassword.getText().toString());
+            Authentificator.setPassword(context, mEditTextPassword.getText().toString());
             Flash.ok(context, "votre mot de passe a été mis à jour.", (dialogInterface, i) -> {
                 context.recreate();
             });
