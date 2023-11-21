@@ -7,6 +7,6 @@
     <color name="colorPrimary">#74a7f3</color>
     <color name="colorPrimaryLight">#5b769e</color>
     <color name="colorSecondary">#1B4F72</color>
-
+    <color name="colorOnPrimary">#5075A3</color>
 
 </resources>

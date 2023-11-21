@@ -11,32 +11,54 @@ Exemple :
 - Une maman vendant du pain qui veut suivre le montant gagné par jour et la durée de ses journées.
 
 ## Fonctionnalités attendues : 
-1. Voir consignes générales (connexion / login / déconnexion, etc.). 
-2. Une page permettant de saisir : 
-  - l’heure de début de son activité ;
-  - l’heure de fin de son activité ;
-  - le montant de la recette journalière ;
-  - le montant des dépenses journalières ; 
-3. Une page permettant de visualiser sous forme de rapport statistique :
-  - le nombre d’heure total travaillé en semaine ; 
-  - le montant total gagné ;
-  - le montant total des recettes. 
-4. Une page permettant de détailler ses dépenses et ajouter des commentaires. 
-5. Une page permettant de consulter les informations sauvegardées (ex. sélectionner une 
-journée spécifique et visualiser les différentes informations sauvegardées afin de 
-connaître par exemple :
-- La plus grande dépense,
-- Le jour le plus long avec le moins de recette,
-- Etc. 
-6. Toutes les données seront sauvegardées dans une base de données locale, interne au 
-téléphone.
+<ol>
+  <li>Voir consignes générales (connexion / login / déconnexion, etc.).  </li>
+  <li>Une page permettant de saisir  </li>
+  <li>
+    <ul>
+      <li>l’heure de début de son activité </li>
+      <li>l’heure de fin de son activité </li>
+      <li>le montant de la recette journalière </li>
+      <li>le montant des dépenses journalières </li>
+    </ul>
+  </li>
+
+  <li>Une page permettant de détailler ses dépenses et ajouter des commentaires.   </li>
+  <li>Une page permettant de visualiser sous forme de rapport statistique   </li>
+  <li>
+    <ul>
+      <li>le nombre d’heure total travaillé en semaine</li>
+      <li>le montant total gagné </li>
+      <li>le montant total des recettes </li>
+    </ul>
+  </li>
+
+  <li>
+    Une page permettant de consulter les informations sauvegardées (ex. sélectionner une 
+    journée spécifique et visualiser les différentes informations sauvegardées afin de 
+    connaître par exemple :
+  </li>
+  <li>
+    <ul>
+      <li>La plus grande dépense</li>
+      <li>Le jour le plus long avec le moins de recette </li>
+      <li>Etc </li>
+    </ul>
+  </li>
+</ol>
 
 
-Bonus 
-- Ajouter des alertes ou notifications qui seront envoyées à l’utilisateur lorsque le quota ou montant 
-cible définie pour une journée est atteint. 
-- Ajouter la possible de rajouter différentes commentaires ou champs spécifiques (ex. trajet 
-effectué sur une journée spécifique). 
+## Bonus 
+  - Ajouter des alertes ou notifications qui seront envoyées à l’utilisateur lorsque le quota ou montant 
+    cible définie pour une journée est atteint. 
+  - Ajouter la possible de rajouter différentes commentaires ou champs spécifiques (ex. trajet 
+    effectué sur une journée spécifique). 
+
+
+
+## Demo
+
+<video src="./demo/demo.mp4" loop controls />
 
 
 

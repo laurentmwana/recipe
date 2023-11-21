@@ -46,6 +46,10 @@ public class ForgotController {
     private void onForgot(View view) {
         Validator validator = new Validator();
 
+        validator.required(mEditTextPassword, mEditTextPin);
+        validator.regex(mEditTextPin, "(^[0-9]+$)");
+        validator.between(mEditTextPin, 4, 4);
+
         if (validator.isValid()) {
 
             String pin = mEditTextPin.getText().toString();

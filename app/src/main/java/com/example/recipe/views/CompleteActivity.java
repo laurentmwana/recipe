@@ -9,13 +9,14 @@ import com.example.recipe.R;
 import com.example.recipe.controller.CompleteActioncontroller;
 import com.example.recipe.exception.NotFoundException;
 import com.example.recipe.helper.Flash;
+import com.example.recipe.helper.Redirect;
+import com.example.recipe.helper.Shared;
 import com.example.recipe.views.partials.CustomActionBar;
 
 public class CompleteActivity extends AppCompatActivity {
 
     private AppCompatActivity instance;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         instance = CompleteActivity.this;
         try {
@@ -27,11 +28,22 @@ public class CompleteActivity extends AppCompatActivity {
         }
     }
 
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_empty, menu);
+        return true;
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Redirect.route(instance, ShowActionActivity.class, "id", Shared.getId(instance));
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        Redirect.route(instance, ShowActionActivity.class, "id", Shared.getId(instance));
         return true;
     }
 
