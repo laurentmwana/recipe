@@ -58,7 +58,7 @@ Exemple :
 
 ## Demo
 
-<video src="./demo/demo.mp4" loop controls />
+<video src="./demo/demo.mp4" controls loop></video>
 
 
 
