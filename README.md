@@ -58,8 +58,7 @@ Exemple :
 
 ## Demo
 
-<video src="./demo/demo.mp4" controls loop></video>
-
+<a href="">voir le demo</a>
 
 
 
